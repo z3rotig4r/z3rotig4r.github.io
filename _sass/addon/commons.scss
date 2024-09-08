@@ -749,19 +749,16 @@ $btn-mb: 0.5rem;
     a {
       @extend %clickable-transition;
       @extend %sidebar-link-hover;
-
-      color: var(--site-title-color);
     }
   }
 
   .site-subtitle {
     font-size: 95%;
-    color: var(--site-subtitle-color);
-    margin-top: 0.25rem;
+    color: rgba(254, 254, 254, 99%);
+    line-height: 1.2rem;
     word-spacing: 1px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+    margin: 0.5rem 1.5rem 0.5rem 1.5rem;
+    min-height: 3rem; // avoid vertical shifting in multi-line words
     user-select: none;
   }
 
