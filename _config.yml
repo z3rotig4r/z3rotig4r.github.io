@@ -23,7 +23,7 @@ description: >- # used by seo meta and the atom feed
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: ""
+url: "https://z3rotig4r.github.io"
 
 github:
   username: z3rotig4r # change to your GitHub username
@@ -223,3 +223,16 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+jekyll_compose:
+  default_front_matter:
+    posts:
+      description:
+      image:
+        path:
+        alt:
+      category: []
+      tags: []
+      pin: false
+      math: true
+      mermaid: true
