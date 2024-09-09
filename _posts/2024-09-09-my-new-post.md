@@ -1,12 +1,9 @@
 ---
 layout: post
-title: My New Post
+title: Test Post
 date: 2024-09-09 16:02 +0900
 description: 
-image:
-  path: 
-  alt: 
-category: []
+category: [github-blog]
 tags: []
 pin: false
 math: true
