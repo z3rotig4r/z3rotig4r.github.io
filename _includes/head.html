@@ -97,6 +97,11 @@
     <link rel="stylesheet" href="{{ site.data.origin[type].glightbox.css | relative_url }}">
   {% endif %}
 
+  <!-- MathJax -->
+  {% if page.math %}
+    {% include mathjax_support.html %}
+  {% end if %}
+
   <!-- JavaScript -->
 
   {% unless site.theme_mode %}

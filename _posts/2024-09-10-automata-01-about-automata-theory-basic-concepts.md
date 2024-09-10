@@ -27,23 +27,39 @@ Wikipedia에 따르면, "대상의 어떤 기능에 주목하여 입력과 내�
 ![automata_intro](/assets/img/contents/automata_intro.png)
 
 # 2. Computation Theory 3요소
-1. Automata (오토마타)  
+1. **Automata (오토마타)**  
 
     디지털 컴퓨터의 추상적 모델을 의미합니다.  
 
-2. Formal Language (형식 언어)  
+2. **Formal Language (형식 언어)**  
 
     심볼(Symbol)의 집합으로 구성된 알파벳(alphabet)으로 구성된 문자열의 집합을 의미합니다.  
     예를 들어, 기계어의 경우, {01, 0011, 000111, ...}이 해당한다고 볼 수 있습니다.  
     Automaton M이 언어 L의 집합 원소를 모두 포함할 때, `Automaton M이 언어 L을 인식한다`고 표현합니다.
 
-3. Grammer (문법)  
+3. **Grammer (문법)**  
 
     형식 언어를 정의하는 매커니즘입니다.  
     문법의 규칙 집합들을 기반으로 형식 언어가 생성됩니다.
    
 # 3. (Formal) Language의 구성 요소
 앞으로는 형식 언어(Formal Language)를 줄여서 그냥 `언어`라고 표현하겠습니다.  
+언어를 이해하기 위해서는 아래 세 가지 요소들을 살펴봐야 합니다.
+
+1. Symbol(심볼)  
+    언어를 이루는 가장 기본적인 요소입니다. 예를 들어, 한글의 자음&모음, 영어의 알파벳 문자, 0~9까지의 숫자 등을 생각하시면 됩니다.  
+
+2. Alphabet(알파벳)  
+    심볼의 공집합이 아닌 집합입니다. 유한해야 합니다.  
+    예를 들면,  
+    binary alphabet으로 {0, 1};
+    English alphabet으로 {a, ..., z};  
+    한글의 자음을 alphabet으로 {ㄱ, ㄴ, ㄷ, ..., ㅎ};  
+    생각해볼 수 있습니다. 
+
+    \\[x+y=a\\] 
+
+3. String(문자열)
 
 
 
