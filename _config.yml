@@ -236,3 +236,4 @@ jekyll_compose:
       pin: false
       math: true
       mermaid: true
+      toc: true
