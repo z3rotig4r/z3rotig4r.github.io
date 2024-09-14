@@ -17,7 +17,7 @@ toc: true
 > 오토마타에 대해서 배우기 전, '집합론과 함수', '자료구조(그래프이론 및 트리구조에 대한 이해)', '귀류법 및 귀납법' 에 대한 사전 지식이 필요합니다.  
 {: .prompt-info } 
 
-<h2>1. Automata Theory란?</h2>
+<h1>1. Automata Theory란?</h1>
 `오토마타 이론`은 계산 능력이 있는 추상 기계와 그 기계를 통해 풀 수 있는 문제들을 연구하는 분야입니다.  
 여기서 `오토마타(Automata)`는 `Automaton`은 복수형으로, 계산 능력이 있는 자동화된 __추상__ 기계, __수학적__ 기계를 의미합니다.  
 Wikipedia에 따르면, "대상의 어떤 기능에 주목하여 입력과 내부 출력 각 신호의 상호관계를 수학 모델로 옮기고, 이 모델을 수학적으로 고찰하여 결론을 유도하는, 내린 결론은 원래 대상에 맞는 다른 문제들을 해석하는 과정에 관여할 수 있도록 하는 학문"이라고 표현할 수 있습니다.  
@@ -26,7 +26,7 @@ Wikipedia에 따르면, "대상의 어떤 기능에 주목하여 입력과 내�
 오토마타를 이해하기 위해선 컴퓨팅 이론에서의 3가지 중요한 개념에 대해 알아볼 필요가 있습니다.
 ![automata_intro](/assets/img/contents/automata_intro.png)
 
-<h2>2. Computation Theory 3요소</h2>
+<h1>2. Computation Theory 3요소</h1>
 1. **Automata (오토마타)**  
 
     디지털 컴퓨터의 추상적 모델을 의미합니다.  
@@ -42,7 +42,7 @@ Wikipedia에 따르면, "대상의 어떤 기능에 주목하여 입력과 내�
     형식 언어를 정의하는 매커니즘입니다.  
     문법의 규칙 집합들을 기반으로 형식 언어가 생성됩니다.
    
-<h2>3. (Formal) Language의 구성 요소</h2>
+<h1>3. (Formal) Language의 구성 요소</h1>
 앞으로는 형식 언어(Formal Language)를 줄여서 그냥 `언어`라고 표현하겠습니다.  
 언어를 이해하기 위해서는 아래 세 가지 요소들을 살펴봐야 합니다.
 
@@ -161,19 +161,36 @@ Wikipedia에 따르면, "대상의 어떤 기능에 주목하여 입력과 내�
         \end{align}
         $$     
 
-3. Language(언어)  
+4. Language(언어)  
 
     언어는 일반적으로 start-closure($\Sigma^*$)의 부분집합으로 정의합니다.  
     어떤 언어 L에 포함되는 string을 L의 문장(Sentence)라고 표현합니다.  
     언어에도 마찬가지로 앞서 설명한 연산방식들이 동일한 방식으로 적용됩니다.  
+
     1) Complement(언어의 여집합)  
         $$ \bar{L} = \Sigma^* - L $$  
-    2) Reverse(언어의 역)
-        $$ L^R = \{\omega^R: \omega \} $$
-    3) Concatenation(언어의 접합, 연결)
-    4) Star-closure
-    5) Positive-closure
 
-<h1> 4. Grammer(문법)</h1>
+    2) Reverse(언어의 역)  
+        $$ L^R = \{\omega^R: \omega \in L\} $$  
+
+    3) Concatenation(언어의 접합, 연결)  
+        $$ L_1L_2 = \{xy: x \in L_1, y \in L_2 \} $$   
+        $$ L^n = LL ... L $$  
+        $$ L^0 = \{\lambda\} $$  
+
+    4) Star-closure  
+        $$ L^* = L^0 \cup L^1 \cup L^2 ... $$  
+        L의 문장들의 접합(concat)으로 구성할 수 있는 문자열의 집합입니다.  
+
+    5) Positive-closure  
+        $$ L^+ = L^1 \cup L^2 \cup ...  $$  
+
+<h1>4. Grammer(문법)</h1>  
+
+저의 경우엔 문법을 이해하는 게 처음엔 많이 어려웠습니다. 생소한 부분이 많다 보니 어려울 수 있습니다. 하지만, 정의 그대로 이해하시고 예시를 적용하시다 보면 깨달음이 오는 순간이 오실겁니다!  
+
+문법은 언어(Language)에 의해 정의된 일정한 규칙을 기반으로 한 시스템입니다.  
+<h2>1) 문법 G의 정의</h2>  
+$$ G = (V, T, S, P) $$  
 
 # 5. 
