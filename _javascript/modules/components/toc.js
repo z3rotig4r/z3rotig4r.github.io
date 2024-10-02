@@ -6,8 +6,8 @@ export function toc() {
       contentSelector: '.content',
       ignoreSelector: '[data-toc-skip]',
       headingSelector: 'h2, h3, h4',
-      orderedList: false,
-      scrollSmooth: false
+      orderedList: true,
+      scrollSmooth: true
     });
 
     document.getElementById('toc-wrapper').classList.remove('d-none');
