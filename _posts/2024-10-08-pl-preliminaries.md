@@ -89,11 +89,13 @@ int main() {
 
 1) Simplicity & Orthogonality  
   - primitives(기본 제공 기능의 의미로 해석하면 편하다.)를 많이 제공하는 것보다 적은 primitive를 제공하고, 높은 직교성을 제공해야 한다.  
-  => Readability의 조건이었던, Simplicity와 Orthogonality를 만족시키면 Writability도 올라간다!
+  => Readability의 조건이었던, Simplicity와 Orthogonality를 만족시키면 Writability도 올라간다!  
+
 2) Support for Abstraction
   - 복잡한 구조나 연산을 정의하고 사용할 때, 세부적인 디테일을 무시하고 사용할 수 있도록 만드는 것이 Abstraction(추상화)이며, 이를 제공해야 Writability가 좋아진다. 왜냐면, 내부의 어려운 로직에 매몰되지 않고 보다 쉬운 코드로 프로그램을 작성할 수 있기 때문이다. 
   -  Process를 Abstraction하는 방법으로 subprogram을 사용 (예: 함수)  
-  -  Data Abstraction 방법으로 Record type을 사용
+  -  Data Abstraction 방법으로 Record type을 사용  
+  
 3) Expressivity
   - 표현력이 좋을수록 작성력이 좋다.  
   - 예를 들어, `count++` 이 `count = count + 1` 보다 코드도 더 짧고 편리해서 작성력이 더 높다고 평가할 수 있다.  
@@ -105,12 +107,15 @@ int main() {
   - 두 변수 간 혹은 하나의 변수와 상수 간에 type compatibility를 테스트하는 것이다.  
   - 일반적으로 컴파일 시간에 type check를 하는 것이 비용적인 측면에서 바람직하다.
   - C에서는 타입 검사가 없는 반면, Pascal에서는 런타임 type check이긴 하지만, subscript range checking을 한다.  
-2) Exception Handling
-  - run-time 에러를 잡아내는 능력은 적절한 reliability를 높여준다. 
-3) Aliasing
+  
+2) Exception Handling  
+  - run-time 에러를 잡아내는 능력은 적절한 reliability를 높여준다.  
+
+3) Aliasing  
   - 동일한 메모리 셀에 대해서 다른 참조 방법 또는 이름을 제공하는 것을 별칭이라고 한다.
   - 별칭 존재는 신뢰성에 악영향을 준다.  
-4) Readability & Writability
+
+4) Readability & Writability  
   - 당연하게도 가독성이 높고, 작성력이 높은 언어는 신뢰성 또한 높다.  
 
 <h3>Cost</h3>  
@@ -141,7 +146,7 @@ int main() {
   - Object-Oriented Programming
   - Process-Oriented Programming
 
-* 언어 설계 Trade-offs 
+3) 언어 설계 Trade-offs 
 => 신뢰성과 실행 비용은 상충관계
 => 간결한 표현(수학적으로 잘 짜여진 표현)과 이해하기 쉬운 표현은 상충관계
 => 유연성과 안전성은 상충관계
@@ -150,10 +155,13 @@ int main() {
 <h2>5. Implementation Methods</h2>
 > 기계어로 컴퓨터가 이해할 수 있도록 번역해야 한다.  
 
-1) 컴파일러 - 기계어로 번역을 미리 해놓고 컴퓨터에서 바로 실행하도록 만든다. 빠른 프로그램 실행이 가능하다.
-2) 인터프리터 - 특별한 컴파일 과정없이, 실행 시에 코드를 한 줄씩 읽어가며, 기계어로 번역한다. 디버깅이 용이하고 구현이 더 간단하지만, 실행시간이 느리고, 메모리 공간을 많이 차지한다는 단점이 있다.
-3) 하이브리드 구현 시스템 - 대표적인 JAVA의 JVM이 이러한 역할을 수행한다. JAVA는 OS 상관없이 bytecode로의 컴파일을 수행하고, OS마다 다른 JVM을 설치하여 bytecode를 interpret한다. 
-4) Preprocessor(전처리기) - 대표적으로 C언어의 #include <stdio.h>이 있는데, macro expander라고 생각하면 된다. 소스코드에 추가적인 코드를 붙여주는 방식이라고 이해하면 편하다.
+1) 컴파일러 - 기계어로 번역을 미리 해놓고 컴퓨터에서 바로 실행하도록 만든다. 빠른 프로그램 실행이 가능하다.  
+
+2) 인터프리터 - 특별한 컴파일 과정없이, 실행 시에 코드를 한 줄씩 읽어가며, 기계어로 번역한다. 디버깅이 용이하고 구현이 더 간단하지만, 실행시간이 느리고, 메모리 공간을 많이 차지한다는 단점이 있다.  
+
+3) 하이브리드 구현 시스템 - 대표적인 JAVA의 JVM이 이러한 역할을 수행한다. JAVA는 OS 상관없이 bytecode로의 컴파일을 수행하고, OS마다 다른 JVM을 설치하여 bytecode를 interpret한다.  
+
+4) Preprocessor(전처리기) - 대표적으로 C언어의 #include <stdio.h>이 있는데, macro expander라고 생각하면 된다. 소스코드에 추가적인 코드를 붙여주는 방식이라고 이해하면 편하다.  
 
 <h2>6. Program Environments</h2>  
 > 프로그래밍 언어는 파일시스템, 코드 에디터, 링커, 컴파일러, 디버거, UI 등 다양한 프로그램 환경을 제공해줘야 한다.
