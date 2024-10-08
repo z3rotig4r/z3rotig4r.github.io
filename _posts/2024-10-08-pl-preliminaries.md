@@ -4,8 +4,8 @@ title: "Concepts of Programming Languages 01: Preliminaries"
 date: 2024-10-08 15:00 +0900
 description: 
 image:
-  path: 
-  alt: 
+  path: /assets/img/contents/pl_preview.jpg
+  alt: concepts of programming languages
 category: [Computer Science, Concepts of Programming Languages]
 tags: [Programming Languages, Criteria]
 pin: false
