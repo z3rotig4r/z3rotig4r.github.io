@@ -7,7 +7,7 @@ image:
   path: 
   alt: 
 category: [Computer Science, Concepts of Programming Languages]
-tags: [Programming Languages, Evaluation Criteria of P]
+tags: [Programming Languages, Criteria]
 pin: false
 math: true
 mermaid: true
