@@ -42,17 +42,31 @@ functional requirements(기능적 요구사항)를 명시한다.
 <h2>2. Entity & Attribute</h2>  
 > ER Model이란 Entity-Relationship Model의 약자이다. 즉, Entity와 그 관계에 주목해서 데이터베이스를 모델링하는 방법론이다. ER Model은 데이터를 Entity, Relationship, Attribute로 설명한다.  
 
+> 추가적으로, 중간 중간 ER Diagram에서 어떻게 사용되는지 설명도 첨부할 예정입니다.  
+
 <h3>Entity</h3>  
 Things or Object 라고 설명한다.  
 즉, 현실세계에서 독립적으로 존재하는 무언가를 Entity로 설명한다.  
 예를 들어, person, car, student와 같이 물리적으로 존재하거나, company, project와 같이 개념적으로 존재하는 object를 말한다.  
+
+<h4>ERD에서 Entity의 표현(교재의 표현과는 상이)</h4>
+```mermaid
+erDiagram
+    CUSTOMER {
+        int id
+        string name
+        string email
+    }
+```
+위 다이어그램은 mermaid를 통해 표현한 ERD이며,  
+해당 과목에서 Entity에 대한 Symbol은 일반적으로 직사각형으로 나타낸다.  
 
 <h3>Attributes</h3>  
 Entity가 가지는, Entity를 설명하는 특정한 속성들이다.  
 예를 들어, Person이라는 사람에 대한 attributes는 나이, 이름, 성별, 집주소, 핸드폰 번호 등이 될 수 있다.  
 
 <h3>Types of Attributes</h3>  
-> attributes의 몇 가지 종ㄹ유가 있다. 알아보도록 하자.  
+> attributes의 몇 가지 종류가 있다. 알아보도록 하자.  
 
 1. Composite Attributes VS. Simple Attributes  
   - Composite Attributes  
@@ -88,6 +102,36 @@ Entity Set은 EMPLOYEE에 속한 직원 A, B, C와 attributes로 묶인 집합�
 - 복합적인 attributes의 조합은 key의 역할을 수행한다. 즉, 여러 개의 attributes의 조합으로 entity를 구별할 수 있다는 의미이다.  
 - key attribute는 Entity Type 당 2개 이상을 가질 수도 있다.  
 
+<h4>ERD에서 Attributes의 표현(교재의 표현과는 상이)</h4>
+```mermaid
+erDiagram
+    CUSTOMER {
+        string name
+        string email
+    }
+```
+위 다이어그램은 mermaid를 통해 표현한 ERD이며, name과 email이 이에 해당한다.  
+해당 과목에서 Attribute에 대한 Symbol은 Entity와 연결된 직선과 타원으로 나타낸다.  
+
+- Key Attribute  
+
+```mermaid
+erDiagram
+    CUSTOMER {
+        int id PK
+        string name
+        string email
+    }
+```  
+위 다이어그램에선 PK 주석을 통해 KEY Attribute를 표현하며,  
+해당 과목에서 Key Attribute에 대한 Symbol은 기존 Attribute의 이름에 Underline 표시를 한다.  
+
+- Multivalued Attribute, Composite Attribute, Derived Attribute 
+mermaid에서는 표현방법이 따로 없으며,  
+해당 과목에서는 Multivalued의 경우 타원의 테두리를 두 개의 선으로 구성함으로써 표현하며,  
+Composite의 경우 상위 개념의 Attribute에 문어발식으로 직선과 타원을 연결하여 표현한다.  
+Derived의 경우, 타원의 테두리를 점선으로 구성함으로써 표현한다.  
+
 <h2>3. Relationship</h2>  
 
 <h3>Relationship Types & Sets</h3>  
@@ -118,6 +162,98 @@ Relationship Degree란 몇 개의 Entity Type들이 해당 Relationship에 참�
     이때, role name을 명시하는 것이 중요하다.  
 
 <h2>4. Relationship Types: Constraints & Attributes</h2>  
+> Relationship Type에는 참여하는 entity에 대한 제약이 존재한다.  
+> 예를 들어, COMPANY에서 각 직원(EMPLOYEE)은 무조건 한 부서에서만 일해야 한다(WORK_FOR)는 규정이 있을 수도 있다.  
+
+<h3>Cardinality Ratio Constraint</h3>  
+> Entity가 참여하는 Relationship 인스턴스의 최대 개수를 명시하는 것이다.  
+> 좀 더 쉽게 말하면, 관계를 맺는 두 Entity Type에 대해서 한 Entity가 얼마나 많은 다른 Entity와 관련될 수 있는지를 나타내는 Constraint를 말한다.  
+
+1. 1:1 Cardinality Ratio  
+   1:1 Binary Relationship은 두 Entity가 서로 1:1의 관계를 맺는 것을 말한다.  
+   예를 들어 회사에서, 매니저이자 직원인 사람은 최대 하나의 부서를 관리하고, 부서는 최대 한 명의 매니저에 의해 관리되어지는 규칙이 있다고 가정하면,  
+   MANAGE라는 relationship type은, MANAGE라는 관계는 1:1 Cardinality Ratio Constraint를 가진다고 본다.  
+2. 1:N  
+   하나의 Entity가 다른 Entity Type의 많은 Entity와 관련이 있지만, 그 역은 성립하지 않는 관계를 말한다.  
+   즉, 1:N Binary Relationship은 1개의 entity와 다수의 entity의 관계를 의미한다.  
+   예를 들어, 회사에서, 직원은 하나의 부서에서 일하지만, 부서는 여러 명의 직원을 가지는 일반적인 규칙이 있다.  
+   이 경우 WORKS_FOR이라는 relationship type은 1:N Cardinality Ratio Constraint를 가진다고 본다.  
+3. N:M  
+   하나의 Entity Type에 속하는 여러 개의 Entity가 다른 Entity Type에 속하는 여러 개의 Entity와 관계를 맺는 것을 의미한다.  
+   예를 들어, 회사에서, 직원은 여러 개의 프로젝트에서 동시에 일할 수 있으며, 프로젝트는 여러 개의 직원이 모여 구성된다.  
+   이 경우 WORKS_ON이라는 relationship type은 N:M Cardinality Ratio Constraint를 가진다고 본다.  
+
+<h3>Participation Constraint</h3>  
+> Entity의 존재가 다른 Entity와 관련된 존재에 의존하는지를 명시하는 것이다.  
+
+1. Total Participation  
+    모든 Entity가 relationship에 참여해야 하는 경우를 말한다.  
+    집합과 함수를 배울 때, Total Function(완전 함수)을 떠올려 생각하면 이해하기 쉽다.  
+  
+2. Partial Participation  
+    모든 Entity가 relationship에 참여할 필요가 없는 경우를 말한다.  
+
+**[Attributes of Relationship Types]**  
+Relationship Types 또한 Attribute를 가질 수 있다.  
+다만, 1:1 또는 1:N의 relationship에서는 Attribute를 Migration 해줘야 한다.  
+1:1의 경우, 아무 쪽에 넘겨주면 되며,  
+1:N의 경우, N-side로 attribute를 넘겨준다.  
+M:N의 경우, attribute를 Migration 해주지 않는데, `참여하는 entity들 간의 조합을 통해서 결정되는 attribute`가 있기 때문이다.  
+
+<h4>ERD에서 Relationship의 표현(교재의 표현과는 상이)</h4>
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+```  
+위 ERD는 mermaid를 통해 그린 ERD에서의 Relationship을 표현한 것이다.  
+교재에서는 마름모로 표시한다. 
+
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ ORDER : "places (Total Participation)"
+```
+위 ERD는 mermaid를 통해 그린 ERD에서의 Total Relationship을 표현한 것이다.(주석을 통해 표시한다.)  
+교재에서 나타내는 방식은 게시글 맨 마지막 이미지를 참고하길 바란다.  
+
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ ORDER : "1:N"
+    ORDER ||--o{ ORDER_DETAIL : "1:N"
+    PRODUCT ||--o{ ORDER_DETAIL : "1:N"
+```  
+위 ERD는 mermaid를 통해 그린 ERD에서의 Cardinality Ratio를 표현한 것이다.(주석을 통해 표시한다.)  
+교재에서 나타내는 방식은 entity와 relationship과의 실선 상단에 1, M, N 등으로 표기한다.  
+
 <h2>5. Weak Entity Types</h2>  
+> Weak Entity Type이란, 자신의 Key Attribute가 없는 Entity Type을 말한다.  
+
+첫 예시로 들었던, COMPANY의 DEPENDENT entity type이 그에 행한다.  
+다른 entity type에 속하는 특정한 entity를 통해 relationship이 형성되는 Entity Type이다.  
+
+Weak Entity Type은 그것을 식별하게 해주는 Owner Entity Type에 의해 Relationship이 만들어진다.  
+예를 들어, DEPENDENT_OF 라는 relationship type을 만들어 DEPENDENT가 EMPLOYEE에 의해 식별된다.  
+
+가장 큰 특징은 Weak Entity는 항상 `Total Participation Constraint`을 가지고 있다.  
+
+<h3>Partial Key</h3>  
+Partial Key란 동일한 owner entity와 관련된 Weak Entity를 고유하게 식별하게 해주는 key이다.  
+relationship을 식별하게 해주는 것과 동시에 key가 사용되어야 한다.  
+예를 들어, COMPANY 예시에서 DEPENDENT의 Dependent_name 속성을 Partial Key로 사용할 수 있다. (단, 동일한 직원의 부양가족 중 동일한 이름이 없다는 가정이 있어야 한다.)  
+
+<h4>ERD에서 Weak Entity 관련 표현(교재의 표현과는 상이)</h4>
+
+mermaid는 Weak Entity를 구별하기 위한 특별한 notation을 제공하진 않지만,  
+교재에서는 직사각형 Entity 구조의 테두리를 한 겹 더 그려줌으로써 표현한다.  
+
+mermaid에서는 Partial Key에 대한 특별한 notation을 제공하진 않지만, 교재에서는 attribute에 점선 밑줄을 긋는 것으로 표현한다.  
+
+추가적으로, mermaid에서는 Weak Entity와 관련하여 Identifying Relationship이 존재하는 부분에 대한 notation을 제공한다.  
+```mermaid
+erDiagram
+    ORDER ||--o{ ORDER_DETAIL : contains
+```
+
 <h2>6. Refining Conceptual Design</h2>  
-<h2>7. ER Diagram</h2>  
+이 게시글의 미리보기 사진을 참고하자.  
+<h2>7. ER Diagram (하단 그림을 참고하자.)</h2>  
+![ERD_Notation](/assets/img/contents/ERD_Notation.png)
