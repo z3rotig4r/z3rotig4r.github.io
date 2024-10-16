@@ -156,10 +156,132 @@ storage binding(메모리 공간 바인딩)이 선언문에 의해 일어난다.
 장점으로는 동적 구조를 가질 수 있다는 점이고,  
 단점으로는 구현이 힘들며, 참조, 할당, 해제에 대한 비용이 크다는 점이 있다.  
 
-<h2>4. Type Checking</h2>
-<h2>5. Strong Typing</h2>
-<h2>6. Type Equivalence</h2>
-<h2>7. Scope</h2>
-<h2>8. Scope & Lifetime</h2>
-<h2>9. Referencing Enviornment</h2>
-<h2>10. Named Constructs</h2>
+<h2>4. Type Checking</h2>  
+Type Checking 이란 operator의 operand가 compatible한지를 보장하는 행위이다.  
+추상적으로 말했는데, 연산자가 적합한지를 판단하거나, 적합한 type으로 자동 형변환(묵시적 형변환, 또는 type coersion)이 가능한 type을 compatible type이라고 하며,  
+compatible type인지를 판단하는 작업이 type checking이다.  
+
+예상하다시피, 두 가지의 type check 방식이 있다.  
+(이런 거 한글로 쓰면 멋이 안 산다.... ㅋㅋㅋ)
+1. Static type checking  
+만약 모든 변수의 type binding이 정적이라면, type checking 또한 static하다.  
+2. Dynamic type checking  
+python이 이렇다. 실행시간에 type checking을 한다.  
+만약, 하나의 메모리 공간에 담긴 값들이 전부 다른 data type이라면, type checking이 굉장히 복잡해진다.  
+절대 컴파일 시간 내에 type checking을 할 수 없다.  
+Python의 경우, 어차피 실행시간 오래 걸리는 거, 코드 유연성도 높이기 위해서 예를 들어, 배열 내에 다른 자료형을 넣어도 되는 이러한 문법을 허용하고 있기 때문에,  
+동적 type checking을 할 수 밖에 없고, 그게 효율적이다.(대부분의 인터프리터 언어가 가지는 장점 아닌 장점이다.)  
+
+<h2>5. Strong Typing</h2>  
+Strongly Typed Language는 모든 데이터 타입이 static binding이며, type 오류가 compile-time에 검출되는 언어를 말한다.  
+단, C/C++의 경우 type check를 하지 않기 때문에, 굉장히 strongly typed language와는 거리가 멀며, Java는 굉장히 가까운 경우에 속한다.  
+
+<h2>6. Type Equivalence</h2>  
+Type compatible은 서로 다른 두 변수 간에 서로 간에 호환이 되느냐, 즉, coersion이 일어나도 상관이 없는가를 나타낸다.  
+정의가 어려우니 예시를 들어보자.  
+```c
+int a = 10;
+double b = 20.0;
+a = b;
+b = a;
+```
+int형 data type인 a와 double형 data type인 b가 있을 때, double을 int에 할당할 수 있는가, 반대로 int를 double에 할당할 수 있는가를 판단하는 것이 Type Equivalence이다.  
+C언어의 위와 같은 경우는 알아서 coercion이 일어난다. 묵시적인 형변환을 통해 할당이 된다.  
+
+반대로, Type equivalence는 `coercion 없이` 한 변수가 다른 변수를 대체할 수 있는 경우를 말한다.  
+즉, Type Compatibility의 strict한 형태이다. (= type compatibility without coercion)  
+Type Equivalence를 정의하는 두 가지 방법이 있다.  
+1. Name Type Equivalence  
+동일한 declaration을 가지거나 동일한 type name을 declaration에 사용해야 두 변수가 equivalent하다고 정의한다.  
+type의 이름까지 같아야 한다.  
+예를 들어, 아래와 같은 C-like 프로그램이 있다고 가정해보자.  
+```c
+struct book {
+  int page;
+  char title[30];
+}
+
+struct ebook {
+  int page;
+  char title[30];
+}
+```
+Name Type Equivalence에 따라 book과 ebook은 type equivalence하지 않다.  
+구현하기 쉽지만 매우 restrictive하다.  
+
+2. Structure Type Equivalence
+반대로, structure type equivalence는 C언어 등에 많이 쓰이는 방식으로, 두 변수가 type compatible하면서 내부 구조가 동등하다면, type equivalence를 충족한다고 정의한다.  
+위 C-like 프로그램의 예시를 다시 살펴볼 때, book과 ebook은 type equivalence를 충족한다고 표현할 수 있다.  
+유연한 방법이지만 구현하기 힘들다.  
+
+<h2>7. Scope</h2>  
+프로그램 변수의 scope는 그 변수가 어떤 statement 범위 내에서 visible한지를 파악하는 것이다.  
+변수가 visible하다는 것은 해당 statement에서 참조되어질 수 있다는 의미이다.  
+알다시피, scoping도 두 가지 종류가 있다.  
+1. Static Scoping  
+동적 스코핑은 쉽게 말해서 코드의 구조만을 보고 참조 환경을 판단한다.  
+지역 변수는 당연히 현재 실행되고 있는 프로시져에서 참조할 수 있다.  
+하지만, 비지역변수의 경우 코드 구조에 따라 컴파일 시간에 어느 변수에 바인딩될지가 결정된다.  
+
+```c
+void main(){
+  int a, b, c;
+...
+}
+void fun1(void){
+  int b, c, d;
+...
+  void fun2(void){
+    int c, d, e;
+    ...	//<-------------- (*)
+  }
+  void fun3(void){
+    int d, e, f;
+    ...
+  }
+}
+
+```
+
+`*`위치에서 만약 정적 scoping을 따른다고 할 때, 참조 환경은 다음과 같다.  
+fun2의 c, d, e와 fun1의 b 이다. (fun2의 c, d는 hidden variable이다. 참조 환경에 포함하지 않음)
+
+참고로, 언어에 따라 블록 안에서도 scoping rule이 적용되는 경우도 있다.  
+
+**static scoping의 단점**  
+컴파일러가 상위 parent의 호출 안 되는 프로시저 내의 scope를 참조하는 오류를 발생시킬 수 있다.  
+따라서, 너무 많은 데이터 접근이 생기고, 프로그램을 구조를 수정하기 매우 힘들어진다.  
+
+2. Dynamic Scoping  
+Dynamic Scoping은 오로지 함수 호출 순서에 따라 결정된다.  
+이러한 특성에 따라 Runtime이 되어서야 참조 환경을 알 수 밖에 없다.  
+program unit 간의 parameter passing의 방법을 이용하여 communication을 하기에 편하다.  
+
+**[Dynamic Scoping의 단점]**  
+1. 실행 내내 변수가 참조하는 변수의 값이 계속 바뀌기 때문에 코드의 흐름을 따라가기 어렵고, 디버깅이 어려워진다.  
+2. subprogram의 지역 변수들은 실행 중인 다른 subprogram에 visible한 상태이기 때문에 지역 변수의 값을 믿을 수 없게 된다.  
+
+<h2>8. Scope & Lifetime</h2>  
+- Scope: 변수가 어디에서 접근 가능한지, 즉, 어디서 visibl한지를 제공하는 지표이다.  
+- Lifetime: 변수가 얼마나 오랫동안 유지되는지를 말하며, 메모리에 바인딩된 시간을 말한다.  
+
+예를 들어, 프로시져 A를 호출 했을 때, 지역 변수 a가 있다면,  
+a의 scope는 호출한 프로시져 내, 혹은 (static or dynamic에 따라 다르지만) 상위 프로시져라고 표현한다.  
+a의 lifetime은 반면, A가 호출된 시점부터 해당 프로시져(A)가 끝날 때까지라고 표현한다.  
+
+<h2>9. Referencing Enviornment</h2>  
+참조환경은 위에서 Static Scoping / Dynamic Scoping을 설명할 때 넘어가듯이 설명했지만,  
+특정 statement에서 볼 수 있는 모든 변수의 집합이라고 정의한다.  
+
+hidden variable: 상위 프로시져에서 동일한 이름의 변수지만 지역변수 우선 또는 프로시져 호출 순위나 구조적 우선 순위에 의해 밀려나 참조되지 못한 변수를 의미한다.  
+active procedure: 이미 실행되었지만 아직 끝나지 않은 프로시져를 말한다.  
+
+<h2>10. Named Constants & Variable Initialization</h2>  
+1) Named Constant  
+한 번 값이 바인딩 되면 절대 안 바뀌는 변수를 말한다.  
+C언어의 const  
+JAVA의 final 이 그 예시이다.  
+
+2) Variable Initialization  
+기억 공간에 바인딩되는 시점에 값이 같이 바인딩되는 상황을 초기화라고 한다.  
+WELL-KNOWN이니 넘어가도록 하자.  
