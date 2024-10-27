@@ -61,7 +61,7 @@ analytics:
   google:
     id: G-7TX4KCYF2L
   goatcounter:
-    id: https://techblog.goatcounter.com/
+    id: techblog
   umami:
     id: # fill in your Umami ID
     domain: # fill in your Umami domain
