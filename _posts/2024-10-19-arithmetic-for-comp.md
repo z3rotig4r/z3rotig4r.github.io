@@ -2,10 +2,6 @@
 layout: post
 title: 'Computer Architecture 03: Arithmetic for Computers (1) - add, sub, mul and div'
 date: 2024-10-19 14:23 +0900
-description: 
-image:
-  path: 
-  alt: 
 category: [Computer Science, Computer Architecture]
 tags: [comp_arch, arithemetic]
 pin: false
@@ -17,7 +13,7 @@ toc: true
 <h2>1. Addition & Subtraction of Integer</h2>  
 1) 덧셈  
 비트로 변환하여 더한다.  
-2) 뺄셈  
+1) 뺄셈  
 피연산자(operand)의 부호를 바꿔 덧셈으로 연산한다.(Add negation of second operand)  
 
 **[Overflow]**  
