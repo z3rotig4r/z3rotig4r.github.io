@@ -3,7 +3,7 @@ layout: post
 title: "육군 정보보호병 전역 후기 및 프로젝트 정리"
 date: 2024-10-28 16:48 +0900
 description: 도망가
-category: [Work Experience & Train Course, ROKA]
+category: [Work Experience, ROKA]
 tags: [CERT, Cyber]
 pin: false
 math: true
