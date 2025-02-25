@@ -4,7 +4,7 @@ title: "[NLP] Attention Is All You Need"
 date: 2025-02-25 15:09 +0900
 description: 
 image:
-  path: assets/img/contents/transformer.png
+  path: /assets/img/contents/transformer.png
   alt: Transformer Architecture
 category: [Paper Review, AI]
 tags: [nlp, transformer, GPT]
