@@ -127,7 +127,6 @@ output은 value의 가중치 합으로 계산, 각 값에 할당된 가중치는
 
 1. Scaled Dot-Product Attention
 	
-	![Scaled Dot-Product Attention]("https://i.imgur.com/OU0amHQ.png")  
 
 	$$\mathrm{Attention(Q, K, V)=softmax(\frac{QK^T}{\sqrt{d_{k}}})V}$$  
 
@@ -158,7 +157,6 @@ output은 value의 가중치 합으로 계산, 각 값에 할당된 가중치는
 
 2. Multi-Head Attention  
 	
-  ![Multi-Head Attention]("https://i.imgur.com/401gu1I.png")
 
 	single attention을 $d_{model}$차원의 Q, K, V로 수행하는 것 대신, 각 Query, Key, Value를 h번 서다른 학습 가능한 linear projection(선형 변환)을 통해 $d_{q}$, $d_{k}$, $d_{v}$차원으로 선형 투영 하는 것이 더 효과적이었음  
 	즉, 각 Query, Key, Value를 서로 다른 학습 가능한 가중치 행렬을 통해 여러 작은 차원으로 변환시켜 h번의 scaled dot-product attention 연산을 수행한 다음 합치는 매커니즘  
