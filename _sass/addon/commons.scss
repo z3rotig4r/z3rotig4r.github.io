@@ -739,8 +739,8 @@ $btn-mb: 0.5rem;
 
   .site-title {
     font-family: inherit;
-    font-weight: 900;
-    font-size: 1.75rem;
+    font-weight: 700;
+    font-size: 1.65rem;
     line-height: 1.2;
     letter-spacing: 0.25px;
     margin-top: 1.25rem;
@@ -753,11 +753,11 @@ $btn-mb: 0.5rem;
   }
 
   .site-subtitle {
-    font-size: 95%;
+    font-size: 78%;
     color: rgba(0, 0, 0, 0.99);
     line-height: 1.2rem;
     word-spacing: 1px;
-    margin: 0.5rem 1.5rem 0.5rem 1.5rem;
+    margin: 0rem 0.5rem 0.5rem 0rem;
     min-height: 3rem; // avoid vertical shifting in multi-line words
     user-select: none;
   }

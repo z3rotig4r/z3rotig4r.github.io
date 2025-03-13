@@ -1,0 +1,220 @@
+---
+layout: post
+title: "[Cryptography] 01.Introduction to Information Security & Cryptography"
+date: 2025-03-11 09:01 +0900
+description: 정보보호란 무엇인지, 암호학이란 무엇인지, 어떤 용어가 사용되는지 간단하게 살펴봅니다.
+image:
+  path: assets/img/contents/Cryptography/Asymmetric Encryption.png
+  alt: Asymmetric Encryption(비대칭키 암호화)
+category: [Computer Science, Cryptography]
+tags: [Cryptography]
+pin: false
+math: true
+mermaid: true
+toc: true
+---
+
+> **세줄요약**  
+> 1.  
+{: .prompt-tip}
+
+
+## 1. Information Security  
+
+### Definition of Information Security  
+Information Security(정보 보호)는 Computer Security라고도 정의를 하며,  
+NIST95에 따르면 정보 시스템 리소스(-> HW, SW, Firmware, Infromation/Data, Telecommunication)의 다음 세 가지 특성을 모두 보호하는 목표를 달성하는 것으로 정의한다.  
+
+1. Confidentiality(기밀성)  
+2. Intergrity(무결성)  
+3. Availability(가용성)  
+
+위 세 가지를 CIA Triad라고 부른다.  
+이외에도 Authenticity(확실성), Accountability(설명가능성) 특성을 이야기하기도 한다.  
+
+### Security Terminology  
+1. Adversary(=Threat Agent)  
+  시스템에 공격을 하는 주체  
+2. Attack  
+  지능적 위협을 통해 시스템 보안에 공격을 가하는 행위  
+3. Countermeasure  
+  위협, 취약점, 공격 등을 줄이기 위한 행동, 기기, 절차, 기술 등
+4. Risk  
+  위험, 특정 위협이 특정한 해로운 결과를 만드는 취약점을 악용할 것이라는 가능성으로 표현되는 손실에 대한 기댓값  
+5. Security Policy  
+  시스템이나 기관이 민감하거나 중요한 자산을 보호하는 보안 서비스를 제공하는 방식을 구체화하거나 규제하는 규칙 또는 관행  
+6. System Resource(=Asset)  
+  자산, 정보 시스템에서 얻을 수 있는 데이터 혹은 시스템에서 제공하는 서비스 등  
+7. Threat  
+  위협, 잠재적인 보안의 위반  
+8. Vulnerability  
+  취약점, 시스템의 디자인(설계), 구현, 연산, 관리 등에서 약한 부분  
+
+### Types of Vulnerability, Attacks & Countermeasure  
+1. Vulnerability  
+  - Corrupted  
+    무결성을 깨는 방식  
+  - Leaky  
+    기밀성을 깨는 방식  
+  - Unavailable or very slow  
+    가용성을 깨는 방식(e.g. DDoS)    
+2. Attacks  
+  - Passive vs. Active  
+  - Insider vs. Outsider  
+3. Countermeasure  
+  - Prevent  
+  - Detect  
+  - Recover  
+
+### Fundamental Security Design Principles  
+- Economy of mechanism  
+- Fail-Safe defaults  
+- Complete mediation  
+- Open design  
+- Separation of privilege  
+- Least privilege  
+- Least common mechanism  
+- Psychological acceptability  
+- Isolation  
+- Encapsulation  
+- Modularity  
+- Layering  
+- Least astonishment  
+
+### Attack Surfaces  
+**시스템에서 도달할 수 있고 악용가능한 취약점이 존재하는 곳**  
+- Network  
+- Software  
+- Human: 사회공학적 기법 등  
+
+### Computer Security Strategy  
+- Security Policy  
+- Security implementation  
+- Security assurance  
+- Security evaluation  
+
+## 2. Introduction to Cryptography  
+
+초기는 안전한 communication을 위해서 암호가 작성되었다면,  
+현대에는 디지털 정보, 트랜젝션, 분산 컴퓨팅 등을 안전하게 하기 위한 기술로 사용되어지고 있다.  
+
+현대 암호학의 범위는 다음과 같다.  
+1. Primitives  
+  암호 시스템의 근간이 되는 함수나 알고리즘  
+  e.g. Hash function, random # generator 등  
+2. Schemes  
+  규격, 규정. Primitives의 집합.  
+  e.g. Encryption(암호화), Signature(서명) 등  
+3. Protocols  
+  둘 이상의 개체가 참여해 성립되는 암호 규약.  
+  e.g. Identification, Key establishment, Secret sharing 등  
+4. Cryptographic applications  
+  암호를 어플리케이션 단에서 사용하는 것  
+  e.g. Secure Internet Protocols(SSL, ...), Electronic cash 등  
+
+### Encryption(암호화)  
+> 데이터 기밀성을 제공하기 위한 기술  
+
+대칭키 암호화와 비대칭키 암호화 방식으로 나뉨  
+1. 대칭키 암호화  
+  - Block Cipher  
+  - Stream Cipher  
+2. 비대칭키 암호화  
+  - Factoring-based  
+    e.g. RSA   
+  - Discrete Logarithm-based  
+    e.g. ElGamal  
+  - PQC(Post-Quantum Cryptography): Lattice-based, Code-based, ...  
+    e.g. NTRU  
+
+3가지 알고리즘을 따름  
+1. Setup Algorithm: Encryption의 초기 설정을 담당하는 필수적인 알고리즘. 매개변수를 바탕으로 암호화에 필요한 key와 복호화에 필요한 key를 생성하며,  
+  두 key는 대칭키의 경우 같으며, 공개키의 경우엔 다르다. 키 길이, 난수 생성 방식 등 전체 암호 시스템의 보안에 영향을 주기 때문에 얼마나 안전해야 하는지를 알 수 있는 알고리즘으로 볼 수도 있다.    
+  $\mathrm{Setup(\lambda)}$ -> $(K_{Enc}, K_{Dec})$  
+2. Encryption Algorithm: 암호화 키($K_{Enc}$)와, 평문(M)을 바탕으로, CT(Cipher Text, 암호문)을 생성한다.     
+  $\mathrm{Enc(}K_{Enc}, \mathrm{M)}$ -> $\mathrm{CT}$  
+3. Decryption Algorithm: 복호화 키($K_{Dex}$)와, 암호문(CT)를 바탕으로, 평문(M)을 생성한다.    
+ $\mathrm{Dec(}K_{Dec}, \mathrm{CT)}$ -> $\mathrm{M}$  
+
+
+### Symmetric Encryption (=Private Key Encryption, Secret Key Encryption)  
+Sender와 Receiver가 모두 동일한 키를 가지고 있다는 것이 큰 특징  
+
+1. 주어진 Plain Text(M)을 비밀키 K를 통해 암호화하여 CT 생성  
+2. 생성된 CT를 바탕으로 비밀키 K를 통해 복호화하여 다시 평문(M)을 생성한다.  
+
+
+고전적인 암호화 기법  
+Block Cipher - DES, AES, ARIA, SEED  
+Stream Cipher - RC3, ChaCha  
+
+장점: 공개키 암호에 비해 빠름  
+단점: 키 공유를 미리 해야 하는 문제, 키가 많이 필요하다는 문제 => $\binom{N}{2}$ 개의 키 필요  
+
+### Asymmetric Encryption (=Public Key Encryption)  
+암호화에 사용되는 키와 복호화에 사용되는 키가 다른 것이 큰 특징  
+암호화에는 Public Key(공개키)를 사용하며, 복호화에는 개인키(비밀키, Private Key, Secret Key)가 사용된다.  
+
+1. 평문을 Public Key를 통해 암호화하여 암호문을 만들고, Public Key를 통해 Secret Key(=개인키)를 만든다.  
+2. 암호문을 생성한 Secret Key를 바탕으로 복호화하여 평문을 얻는다.  
+
+RSA, ElGamal, NTRU 등이 있다.  
+장점: 키 공유가 비교적 쉽다. 키의 개수가 적기 때문에 키 관리가 용이하다.  
+단점: 대칭키 암호화에 비해 느리다. 아래 사진처럼 공개키 ring 뭉치로 관리하기 때문!  
+![Asymmetric Encryption](assets/img/contents/Cryptography/Asymmetric Encryption.png)  
+
+### Terminology for Encryption  
+- Plaintext(평문): 암호 알고리즘에 input으로 주어지는 원본 메시지/데이터  
+- Ciphertext(암호문): 암호화 알고리즘의 output  
+- Encryption(암호화): 평문과 key를 input으로 가지고, 암호문(Ciphertext)를 반환하는 알고리즘  
+- Decryption(복호화): 암호문과 key를 input으로 가지고, 평문을 반환하는 알고리즘  
+
+### Kerckhoff's Principle  
+> 암/복호화 알고리즘은 비밀일 필요가 없다.(=숨길 필요가 없다.)  
+> 암/복호화 알고리즘은 불편함없이 공격자에 의해 일어날 수 있음에 틀림없다.  
+> 즉, 암호 시스템의 안전성은 암호 알고리즘의 기밀성이 의존해선 안 된다.  
+> 또한, 단순히 "비밀키"만 비밀로 유지하도록 가정하고, 나머지(공개키, 암호 알고리즘 등)의 경우는 공개되었다는 가정하에 암호에 대한 안전성을 따져야 한다.  
+
+**Open Design**을 채택한 원리라고도 할 수 있다.  
+
+왜 비밀키만 비밀이라는 점만 고려해 안전성을 따질까?  
+비밀이 최소화 되는 것은 비용을 최소화하는 것이기 때문이다.  
+- 알고리즘보다 비밀키를 드러나지 않게 유지하는 것이 더욱 쉽다.  
+- 만약 키가 유출되었다면 키만 바꾸면 된다.  
+  즉, Recover 상황을 가정했을 때, Key만 비밀로 유지하면, Key만 갈아 끼우면 되지만,  
+  암호 알고리즘도 비밀로 했을 때 암호 알고리즘이 유출되었다면 알고리즘 전체를 뜯어 고쳐야 되므로, 유지보수 비용이 증가하는 것이다.    
+- 다른 알고리즘을 사용해서 다른 사람들과 소통하는 것보다 다른 키를 사용해 소통하는 것이 더 효율적이고 쉽다.  
+
+이외에도 여러 가지 이유가 있지만 비슷한 이유이므로 생략.  
+
+### Basic Types of Attacks against Encryption  
+1. Brute-force Attack: 타겟한 암호문에 대해서 모든 가능한 키를 일일이 대입/대조하는 공격, Encryption Scheme 설계 시 가장 우선적으로 고려하는 공격  
+  Key Size를 크게 만들면 어느 정도 해결이 가능하다.    
+2. Cryptanalysis(암호해독)  
+  공격자에게 주어진 정보와 그 범위에 따라 4 가지의 종류로 구분한다.  
+  1) Ciphertext Only  
+    공격자가 암호문만 가지고 평문을 유추하는 방식  
+  2) Known Plaintext  
+    공격자가 일부 평문과 이에 대응하는 암호문을 알고 있는 상황에서, 이를 이용해 다른 암호문을 해독하는 방식  
+    e.g. 앨런 튜링의 애니그마 해독  
+  3) Chosen Plaintext  
+    공격자가 특정 평문을 선택하여 암호화한 결과를 분석하여 공격하는 방식  
+  4) Chosen Ciphertext  
+    공격자가 특정 암호문을 선택하여 복호화한 결과를 분석하여 공격하는 방식  
+
+## 3. Classical Encryption  
+
+### Preliminaries(Notations)  
+$$\mathbb{Z}_m = \{0, 1, 2, \dots, m-1\}$$  
+m으로 나눈 나머지 값에 대한 집합이다.  
+
+g mod p: 모듈로 연산으로, g를 p로 나눈 나머지를 말한다.  
+당연히 나머지는 0 이상인 정수이다.  
+e.g. -7 mod 26 = 19, 정수론의 합동식 표현으로는 $-7 \equiv 19 \quad (mod 26)$  
+
+
+
+
+### Shift Cipher  
+
+### Affine
