@@ -212,9 +212,84 @@ g mod p: 모듈로 연산으로, g를 p로 나눈 나머지를 말한다.
 당연히 나머지는 0 이상인 정수이다.  
 e.g. -7 mod 26 = 19, 정수론의 합동식 표현으로는 $-7 \equiv 19 \quad (mod 26)$  
 
+Alphabet 문자만 사용하기 때문에 $\mathbb{Z}_{26}$에 속한 원소들에 a부터 z까지 차례대로 숫자로 대체하여 사용한다.  
+
+### Shift Cipher(시프트 암호)  
+**정의**  
+For $0\leq K \leq 25$ ,  
+$$Enc(K, x) = (x+K) \; mod \; 26$$  
+$$Dec(K, Y) = (Y-K) \; mod \; 26$$  
+
+**예시**   
+if K = 9:  
+SHIFT (18 7 8 5 19)  
+각각 +9 한 뒤에 mod 26  
+BQROC (1 16 17 14 2)  
+복호화는 역으로 계산  
+각각 -9 한 뒤에 mod 26  
+SHIFT (18 7 8 5 19)  
+
+cf. K=3인 경우는 `카이사르 암호`에 해당한다.  
+
+**공격/취약점**  
+1. Private Key의 후보가 오로지 26개이기 때문에 Brute-force Attack에 취약함  
+2. Known Plaintext Attack에 취약하다.  
+  예를 들어, 평문 SHIFT가 BQROC로 암호화되는 상황이라면,  
+  B - S = (1 - 18) mod 26 = 9 = K  
+  $K=9$임을 쉽게 알 수 있다.  
+
+### Affine Cipher(아핀 암호)  
+**정의**  
+$For \; K=(\alpha, \beta) \; where \; \alpha, \beta \in \mathbb{Z}_{26} \; and \; gcd(\alpha, 26) = 1$ ,  
+$$Enc(K, x) = \alpha x+\beta \; mod \; 26$$  
+$$Dec(K, Y) = \alpha^{-1}(Y-\beta) \; mod \; 26$$  
+
+**예시**  
+if $K=(\alpha, \beta)=(7, 3)$:  
+HOT (7 14 19) -> AXG (52 101 136)  
+7 => 7*7+3 mod 26 => $52 \equiv 0$ => A  
+14 => 14*7+3 mod 26 => $101 \equiv 23$ => X  
+19 => 19*7+3 mod 26 => $136 \equiv 6$ => G  
+
+그렇다면 복호화는?  
+[]()
+
+**공격/취약점**  
 
 
+### Substitution Cipher(치환 암호)  
+**정의**  
+$For \; K=\pi \; where \; \pi \; is \; a \; permutation \; on \; \mathbb{Z}_{26}$  
+$$Enc(K, x) = \pi(x)$$  
+$$Dec(K, Y) = \pi^{-1}(Y)$$  
 
-### Shift Cipher  
+**왜 $gcd(\alpha, 26) = 1$을 만족해야 하는가?**  
 
-### Affine
+
+**예시**  
+
+
+**공격/취약점**  
+
+
+cf. Statistical Test: 영어의 경우 평균적인 알파벳 사용빈도에 따라 암호문을 유추할 수 있다.(예를 들면, e가 가장 많이 나오기 때문에 빈도가 가장 높은 문자를 e로 설정하여 유추)  
+
+### Vigenère Cipher(비제네르 암호)  
+**정의**  
+
+**예시**  
+
+**공격/취약점**  
+
+
+### Permutation Cipher(순열 암호)  
+**정의**  
+
+**예시**  
+
+**공격/취약점**  
+
+### LFSR Cipher(Linear Feedback Shift Register 암호)  
+
+### One-Time Pads  
+
