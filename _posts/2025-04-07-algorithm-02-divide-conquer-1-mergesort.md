@@ -165,5 +165,29 @@ Merge sort나 Insertion sort에 비해 성능이 향상된 것을 확인할 수 
 
 여기서 height는 decreasing factor에만 적용받음  
 
-
 ### Master method  
+$$T(n) = aT(\frac{n}{b})+f(n)$$  
+위와 같은 꼴을 만족 시에 사용할 수 있다.  
+눈치챘다시피, $a \geq 1$는 subproblem의 개수이고, $b > 1$는 decreasing factor이다.  
+f(n)은 D&Q 시에 발생하는 cost이다. 높이도 일반화하면 $log_b n$으로 나타낼 수 있다.(decreasing factor인 b에 오로지 의존하는 값임을 확인할 수 있다.)  
+뿐만 아니라, 마지막 레벨($\Theta(1)$인)의 개수는 $n^{log_b a}$로 고정됨을 알 수 있다.  
+아래는 total cost이다.  
+
+$$\mathrm{Total: } \Theta(n^{log_b a}) + \sum_{j=0}^{log_b n - 1} a^jf(n/b^j)$$  
+
+Case 1: $f(n) < n^{log_b a}$  
+어떠한 상수 $\epsilon > 0$에 대해서, $f(n) = O(n^{\log_b a-\epsilon})$ 라면,  
+$$T(n) = \Theta(n^{log_b a})$$를 취한다.    
+
+Case 2: $f(n) = n^{log_b a}$  
+$f(n) = O(n^{\log_b a})$ 라면,  
+$$T(n) = \Theta(n^{log_b a} \lg n)$$을 취한다.  
+
+Case 3: $f(n) > n^{log_b a}$  
+어떤 상수 $\epsilon > 0$에 대해서, $f(n)=\Omega(n^{\log_b a+\epsilon})$이고, $c<1$인 어떤 상수 c와 충분히 큰 모든 n에 대해서, $af(\frac{n}{b})<cf(n)$라면,  
+$$T(n)=\Theta(f(n))$$을 취한다.  
+
+> Master Method로 안 되는 경우가 있다.  
+> $T(n)= 4T(n/2) + n^2 \lg n$  
+> 확장된 Master Method를 이용하면 풀린다. (나중에 시간날 때 서술할 예정)  
+{: .prompt-danger }  
