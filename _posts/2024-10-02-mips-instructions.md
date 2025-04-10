@@ -8,7 +8,7 @@ image:
   alt: comp_arch_textbook
 category: [Computer Science, Computer Architecture]
 tags: [comp_arch, MIPS, ISA]
-pin: true
+pin: false
 math: true
 mermaid: true
 toc: true
