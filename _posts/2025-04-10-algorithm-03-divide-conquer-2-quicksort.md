@@ -68,8 +68,28 @@ PARTITION(A, p, r)
 > Quick Sort의 Time Complexity는 오로지 partitioning이 balance 한지 아닌지에 의존한다.  
 
 그러면 Partitioning의 worst-case와 best-case는 어떻게 될까?  
+1. Worst-Case Partitioning  
+  두 개의 subarray 내의 element 개수가 0개와 n-1개로 한쪽에만 쏠린 경우  
+  Recursion-Tree Method를 활용해 시간복잡도를 추정해보면  
+  $$T(n)=T(n-1)+T(0)+\Theta(n)=T(n-1)+\Theta(n)$$  
+  결국엔 $T(n)=\frac{n(n+1)}{2}$을 따라가고, $T(n)=\Theta(n^2)$임은 너무 자명하다.  
+2. Best-Case Partitioning  
+  두 개의 subarray 내의 element 개수가 정확히 절반으로 나뉜 경우  
+  $$T(n)=2T(n/2)+\Theta(n)$$  
+  Recurrence 풀어본 경험상, 딱보면 각 Lv 내 노드 합이 n으로 유지, 높이는 $\lg n$을 따라가므로, $T(n)=\Theta(n \lg n)$는 너무 자명하다.  
 
+그렇다면, Avg-Case Partitioning은 어떻게 구할까?  
+결론부터 설명하자면, Best-Case에 가깝다.  
+예를 들어, $T(n)=T(9n/10)+T(n/10) + \Theta(n)$라 했을 때,  
+양쪽 partitioning이 9:1로 나뉘는 것을 확인할 수 있고,  
+Recursion-Tree 그려보면, unbalanced 해보이지만, 여전히 $O(n \lg n)$를 만족함을 알 수 있다.  
 
+하지만, 1:99 처럼 굉장히 치우진다면 tree의 높이가 $\lg n$보다 $n$에 가까워지기 때문에 worst-case인 $O(n^2)$에 가까워진다.  
 
-### Improving Quick Sort: Tail-Recursive Quick Sort & Randomized Quick Sort  
+????
+
+### Improving Quick Sort: Randomized Quick Sort & Tail-Recursive Quick Sort  
+Motivation  
+Quick sort의 성능은 각 partition에서 pivot element의 
+
 
