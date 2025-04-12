@@ -76,20 +76,77 @@ PARTITION(A, p, r)
 2. Best-Case Partitioning  
   두 개의 subarray 내의 element 개수가 정확히 절반으로 나뉜 경우  
   $$T(n)=2T(n/2)+\Theta(n)$$  
-  Recurrence 풀어본 경험상, 딱보면 각 Lv 내 노드 합이 n으로 유지, 높이는 $\lg n$을 따라가므로, $T(n)=\Theta(n \lg n)$는 너무 자명하다.  
+  딱보면 Recursion Tree에서 각 Lv 내 노드 합이 n으로 유지, 높이는 $\lg n$을 따라가므로, $T(n)=\Theta(n \lg n)$는 너무 자명하다.  
 
 그렇다면, Avg-Case Partitioning은 어떻게 구할까?  
-결론부터 설명하자면, Best-Case에 가깝다.  
+결론부터 설명하자면, `Best-Case`에 가깝다.  
 예를 들어, $T(n)=T(9n/10)+T(n/10) + \Theta(n)$라 했을 때,  
 양쪽 partitioning이 9:1로 나뉘는 것을 확인할 수 있고,  
 Recursion-Tree 그려보면, unbalanced 해보이지만, 여전히 $O(n \lg n)$를 만족함을 알 수 있다.  
+1:99 처럼 굉장히 치우쳐도 여전히 시간복잡도는 $O(n \lg n)$을 만족한다.  
 
-하지만, 1:99 처럼 굉장히 치우진다면 tree의 높이가 $\lg n$보다 $n$에 가까워지기 때문에 worst-case인 $O(n^2)$에 가까워진다.  
+**Worst-case inputs에 대한 상황은 얼마나 자주 발생하는가**  
+만약, PIVOT의 설정을 Randomizing 해놓는다면,  
+1. 정확히 절반으로 partitioning하는 곳에 PIVOT이 위치하는 good split  
+2. PIVOT이 한 쪽으로 치우친 bad split  
+두 가지 split이 가능하다.  
+(왜 Q.S.에 randomized behavior를 추가하는지는 Randomized Quick Sort를 설명할 때 설명하도록 하겠다.)  
 
-????
+가정: 확률론적으로, 원소들에 대한 모든 순열은 동일하게 일어날 것이다.  
+따라서, 매 level마다 동일한 방식으로 partitioning이 일어날 것이라고 매우 낮게 예측하며, 그럴 가능성이 없다고 볼 수 있다.  
+어떤 상황에서는 4-6 partitioning이, 어떤 상황에서는 9-1 partitioning이 일어나고,  
+항상 best-case나 worst-case partitioning이 일어날 수 없다.  
+즉, avg-case에서 Partition은 good/bad split을 만들 수 있고, good/bad split은 recursion tree 전반에 랜덤하게 분포된다.  
 
-### Improving Quick Sort: Randomized Quick Sort & Tail-Recursive Quick Sort  
-Motivation  
-Quick sort의 성능은 각 partition에서 pivot element의 
+worst-case 예제 Case 1 - 내림차순 정렬된 배열  
+=> $\Theta(n^2)$  
+
+worst-case 예제 Case 2 - 모든 원소가 동일한 값으로 된 배열  
+=> $\Theta(n^2)$  
+
+## Improving Quick Sort: Randomized Quick Sort & Tail-Recursive Quick Sort  
+
+### Randomized Quick Sort  
+Quick sort의 성능은 각 partition(iteration)에서 pivot에 의존한다.  
+또한, element의 모든 permutation은 동등하게 일어날 것이라고 가정하고, good/bad split이 랜덤으로 균등하게 일어나길 기대한다.  
+
+그러나, 위 가정이 현실에서는 어긋나는 경우가 있다.  
+실제 시스템 상에서는 대부분 정렬된 경우가 많기 때문에 여기서 퀵소트를 적용한다면, worst-case가 자주 등장할 것이다.(당연히 Pivot의 randomness를 가정하지 않고, 왼쪽 또는 오른쪽 끝에 PIVOT을 둘 때이다.)  
+
+이를 해결하기 위해 `Randomness`를 도입한다.  
+첫 번째나 마지막 element를 PIVOT으로 사용하는 것 대신에, A[p, ..., r]로 구성된 subarray에서 `임의로` 선택한 element를 PIVOT으로 선택한다.  
+subarray의 (r-p+1) 개의 원소 중 어떤 것이든 동일한 확률로 PIVOT이 될 수 있다.  
+=> Randomness의 장점은 split이 good/bad split이 잘 균형잡힌 평균적인 확률로 나타날 수 있다는 것이고, 이것이 성능 향상으로 이어질 수 있다는 것이다.  
+아래는 Randomized quick sort Pseudo-code 예시이다.  
+
+```pseudocode
+RANDOMIZED-PARTITION(A, p, r)
+	i = RANDOM(p, r)
+	SWAP(A[r], A[i])
+	return PARTITION(A, p, r)
+```
+
+```pseudocode
+RANDOMIZED-QUICKSORT(A, p, r)
+	if p < r
+		q = RANDOMIZED-PARTITION(A, p, r)
+		RANDOMIZED-QUICKSORT(A, p, q-1)
+		RANDOMIZED-QUICKSORT(A, q+1, r)
+```  
+
+best-case: $\Theta(n)$  
+worst-case: 
+
+### Median-of-3 Method  
+Median as a Pivot
+각 subarray의 median 값은 PIVOT이 되기에 가장 적합하다. (=항상 balanced partitioning이 가능하기 때문)  
+하지만, subarray 내의 median 값을 구하기엔 subarray 전체를 스캔해야 하기 때문에 시간 복잡도 증가  
+그래서 일반적으로, subarray 내에서 3개의 값을 임의로 골라서, 그 중 median 값을 PIVOT으로 결정할 수 있다. 그러면 좀더 balanced partitioning이 가능하다.  
+
+
+
+
+
+### Tail-Recursive Quick Sort
 
 
