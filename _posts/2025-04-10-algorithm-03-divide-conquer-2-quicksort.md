@@ -134,8 +134,27 @@ RANDOMIZED-QUICKSORT(A, p, r)
 		RANDOMIZED-QUICKSORT(A, q+1, r)
 ```  
 
-best-case: $\Theta(n)$  
-worst-case: 
+```psuedocode
+PARTITION(A, p, r)
+  x = A[r]
+  i = p-1
+  for j=p to r-1
+    if A[j] <= x
+      i = i + 1
+      swap(A[j], A[i])
+  swap(A[i+1], A[r])
+  return i+1
+```  
+
+아쉽게도, worst-case Time complexity는 randomness를 적용하더라도 $\Theta(n^2)$를 따른다.  
+Avg-case Time Complexity를 계산해보자.  
+퀵소트의 실행 시간은 Partition이 좌우하기 때문에, 아래와 같은 식으로 평균 시간 복잡도를 작성해볼 수 있다.  
+(Partition 프로시저가 호출되는 횟수) * cost  
+cost는 pivot 선택하는데 $\Theta(1)$ + PARTITION 함수 내의 비교 횟수만큼과 동일하다.  
+
+그러면, PARTITION 프로시저가 얼마나 많이 호출되는지 알아야 하는데, 잘 생각해보면 한번 pivot으로 선택되면 다시는 
+
+
 
 ### Median-of-3 Method  
 Median as a Pivot
@@ -148,5 +167,65 @@ Median as a Pivot
 
 
 ### Tail-Recursive Quick Sort
+Recursive 알고리즘 (재귀 알고리즘)이란 subproblem들에 대해서 알고리즘 자체를 재귀적으로 호출하는 알고리즘으로, 현재 설명하는 퀵소트와 같은 Divide & Conquer 알고리즘에서는 재귀 구조가 필수적이다.  
+하지만, 이러한 재귀 구조는 메모리 상에서 스택 오버플로우를 일으킬 수 있다. 
+이에 대한 해결책으로 사용하는 것이 Tail-Recursive Algorithm이다.  
 
+함수에 의해 실행된 마지막 statement가 recursive call 이어야 한다.  
+즉, recursion 호출을 한 뒤, 메모리 상에 남는 게 없어야 한다.  
+function call을 stack에 쌓아두지 않는 것이다.  
+자기 자신만 stack 상에 남아야 한다.  
+
+이해가 어려우니 팩토리얼 예제로 예시를 들면,  
+```python
+def factorial(n):
+    if n == 1:
+      return n
+    else:
+      return n * factorial(n-1)
+```  
+위에는 그냥 재귀적인데,  
+```python
+def tail_factorial(n, a):
+  if n==1:
+    return a
+  else:
+    return tail_factorial(n-1, n*a)
+```  
+이번 코드로 다음 factorial 함수 결과를 기다리는 변수 n에 대한 값은 존재하지 않고, 오로지 tail_factorial 함수의 반환값만 스택 프레임에 저장한다.  
+쉽게 이해하자면, 함수를 종료하기 위해 함수의 마지막에서 함수를 호출하는 방식이다.  
+
+위 과정을 퀵소트에도 적용해본다면 다음과 같다.   
+
+```
+TAIL-RECURSIVE-QUICKSORT(A, p, r)
+while p < r
+  //Partition and sort left subarray
+  q = PARTITION(A, p, r)
+  TAIL-RECURSIVE-QUICKORT(A, p, q-1)
+  p = q+1
+```  
+
+위 과정을 자세하게 설명해보면,  
+while 문을 통해 기존 QUICKSORT 코드의 오른쪽 부분을 재귀로 호출하는 것을 피할 수 있다.  
+partitioning 후에 왼쪽 subarray만 recursive 돌리고, 배열 인덱스 수정후, 다른 subarray에서 반복문으로 처리한다.  
+
+Auxiliary Space(보조 공간)이 필요한데, 만약 best-case (균형잡힌 partitioning)라면 $\Theta(\lg n)$의 공간이 필요하지만, worst-case (1:1:1: ...)라면, $\Theta(n)$의 공간이 필요하기에 스택 오버플로우가 일어날 수도 있다.   
+항상 왼쪽만 재귀 호출하면, 재귀 stack-depth가 n에 가깝게 커지기 때문에 stack overflow가 해결되지 않는다.
+즉, worst-case의 경우에 stack-depth가 줄지 않는 문제가 발생하므로 어떻게 하면 줄일지 고민해봐야 한다.  
+
+**해결방법**  
+항상 작은 쪽 부분 배열만 Recursion 돌리고, 큰 쪽 배열은 iterative control structure (반복문)을 이용해 해결하면 된다.  
+이 경우, stack-depth는 아무리 커져도 $\Theta(\lg n)$ 이다.  
+
+```
+QUICKSORT''(A, p, r)
+  while p<r
+    q <- PARTITION(A, p, r)
+    if q-p < r-q
+      then QUICKSORT''(A, p, q-1)
+        p <- q+1
+      else QUICKSORT''(A, q+1, r)
+        r <- q-1
+```  
 
