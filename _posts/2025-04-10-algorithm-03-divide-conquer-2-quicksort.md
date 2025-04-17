@@ -42,7 +42,7 @@ p=0, j=0, r=7, i=-1 (i는 아직 left subarray가 생성이 안 되었기 때문
 ```psuedocode
 QUICKSORT(A, p, r)
   if p<r
-    q = PARTITION(A, q, r) // 여기서 q는 i+1번째 index를 반환한다.  
+    q = PARTITION(A, p, r) // 여기서 q는 i+1번째 index를 반환한다.  
     QUICKSORT(A, p, q-1)
     QUICKSORT(A, q+1, r)
 ```  
