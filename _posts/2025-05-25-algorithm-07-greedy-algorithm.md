@@ -115,11 +115,89 @@ i번째 item은 $v_i$ 달러, $w_i$ 파운드임.
 **Fractional Knapsack Problem은 파운드당 값어치를 비교해서 가장 최선의 선택을 하여 Greedy를 적용할 수 있으나, 0-1 Knapsack Problem은 Greedy 적용 불가!**  
 
 ## Problem 2: Huffman Codes  
-데이터 압축 방식으로, Greedy 기반이다.  
-최적의 prefix code를 위해 Full Binary Tree를 만드는 것  
+데이터 압축 방식으로, Greedy 알고리즘 기반이다.  
+한줄로 요약하자면, 최적의 prefix code를 위해 Full Binary Tree를 만드는 것으로 정리할 수 있다.  
 
+데이터를 encoding/decoding 하는 방법은 아래와 같다.  
+기본적으로 binary character code(=코드)를 활용하며, 특별한 binary string인 `codeword`로 디코딩한다.  
+아래와 같은 두 가지 방식의 코드가 있다.  
+1. Fixed-Length Code  
+  고정 길이 방식의 코드로 인코딩하는 방식으로, 모든 character(문자)들이 동일한 길이의 바이너리 코드로 사용된다.  
+  하지만, 고정 길이 코드는 비효율적인 것이, 불필요하게 많은 메모리를 차지한다. 이유는 가변길이코드 설명에서 이어진다.  
+2. Variable-Length Code  
+  가변 길이 방식의 코드로 인코딩하는 방식으로, 빈도가 가장 높은 문자가 1bit의 codeword를 가지고, 더 빈도가 낮아질수록, 2bit/3bit/... 의 긴 codeword를 가진다.  
+  이를 통해, 인코딩/디코딩에 사용되는 메모리 공간을 줄여, 효율적으로 작동하게 한다.  
 
+### Prefix Codes  
+만약, 'a'가 0이고, 'b'가 01이고, 'c'가 1이라고 하면,  
+001의 디코딩은 0|01 (ab) 인지, 0|0|1 (aac) 인지, 애매모호하고 디코딩되는 상황이 발생한다. 즉, codeword가 `ambiguous`해질 수 있다.  
 
+따라서, prefix code는 어떠한 codeword도 다른 codeword의 prefix가 될 수 없도록 하는 코드이다.  
+즉, 한 문자의 codeword를 prefix로 가지는 어떠한 codeword도 없다는 것이다.  
+만약, 최빈 문자인 'a'가 `0`을 codeword로 가진다면, 다른 어떠한 문자도 `0`으로 시작할 수 없다.  
 
+이러한 Prefix Code와 Variable-length Code를 가지는 코드의 codeword를 최적으로 설계하는 방법은 `Greedy`로 해결하며, `Full Binary Tree(모든 node의 child가 2개 or 0개인 트리)` 자료구조를 활용한다.  
 
-![허프만코드](/assets/img/contents/Algorithm/huffman_code.png)
+### Prefix Codes as a Full Binary Tree  
+문자에 대해서 binary prefix code는 Binary Tree 상의 root node에서 leaf node까지의 simple path로 해석할 수 있다.  
+
+데이터에 대한 최적의 코드는 항상 Full Binary Tree 형태로 나타난다.  
+왜냐면, 빈번하게 사용되는 문자일수록, root 노드에 더 가까운 leaf 노드로 놓여지기 때문이다. 이렇게 되면, C개의 문자들로 구성된 문자 집합에 대해서 Full Binary Tree가 있다면, C개의 Leaf node와 (C-1)개의 Internal node(당연히 root 포함임)로 구성된다.  
+
+![허프만코드](/assets/img/contents/Algorithm/huffman_code.png)  
+
+### Cost of Tree for Codewords  
+어떤 트리 T를 통해 데이터를 Binary
+$$B(T) = \sum_{c \in C} c.freq \times d_T(c)$$  
+$c.freq$는 문자 c의 빈도를 나타내는 값이고,  
+$d_T(c)$는 c에 대한 codeword의 길이를 나타내는 값, 즉 leaf node의 깊이를 뜻하기도 한다.  
+
+![fixed_vs_variable](assets/img/contents/Algorithm/fixed_vs_vari.png)  
+
+왼쪽 트리는 Fixed-length code(모든 leaf node 까지의 depth가 같다)이고, 오른쪽은 Variable-length code이다.  
+
+즉, 우리의 목표는 Full binary tree를 만들어 B(T)를 최소화하는 쪽으로 설계하는 것이다.  
+
+### Methodology of the Greedy Algorithm  
+C개의 leaf node로 시작해서, (C-1)개의 합치는 연산을 통해 Full binary tree를 만든다.  
+여기서 Greedy Choice가 들어가는데, 가장 빈도가 낮은 두 character를 맨 처음 merge 시킨다.(문자(C)들은 min-priority queue인 Q에 저장되고, Q를 통해 최소 빈도 문자 2개를 꺼낸다.)  
+
+```psuedocode
+HUFFMAN(C)
+  n = |C|
+  Q = C
+  for i=1 to n-1
+    allocate a new node z
+    z.left = x = EXTRACT-MIN(Q)
+    z.right = y = EXTRACT-MIN(Q)
+    z.freq = x.freq + y.freq
+    INSERT(Q, z)
+  return EXTRACT-MIN(Q)
+```  
+
+![process_of_huffman_codes](assets/img/contents/Algorithm/process_of_huff.png)  
+
+**총 시간복잡도:** $O(n \lg n)$  
+1. min heap 생성: $O(n)$
+2. Merge & Min-heapify: $O(n \lg n)$  
+  알고리즘은 (n-1)번 merging 연산을 수행하고, 각 merging operation에 대해서 Min-Heapify를 수행한다.  
+
+### Correctness of the Greedy Algorithm  
+
+Greedy의 Correctness를 파악하기 위해,  
+1. Greedy-choice property  
+2. Optimal substructure  
+두 가지를 만족하는지 파악해야 한다.  
+
+Lemma 1) Greedy-Choice Property  
+C를 문자들 집합이라고 할 때,  
+x와 y를 가장 적은 빈도로 나타난 두 개의 문자라고 가정하자.  
+x와 y에 대한 codeword가 동일한 길이를 가지면서 마지막 bit만 다른, C에 대한 prefix code가 존재한다.  
+
+이때, 임의의 최적의 prefix code tree T가 있고,  
+문자 x와 y가 가장 깊은 위치의 형제 leaf 노드로 나타나는 다른 최적의 prefix code tree를 만들도록 수정하는 방식으로 증명한다.  
+
+Lemma 2) Optimal Substructure  
+x와 y가 C에서 가장 적은 빈도를 나타내는 문자라고 했을 때,  
+$C' = C - \\{x, y\\} \cup \\{z\\}$이며, 이때 z.freq = x.freq + y.freq 이다.  
+T'을 C'의 최적 prefix code tree라고 했을 때, C에 대한 최적 prefix code tree인 T는 T'으로 부터 도출된다.  
