@@ -173,7 +173,8 @@ for v = 1 to |G.V|       // 모든 정점 v에 대해
 
 ![dfs_example](assets/img/contents/Algorithm/dfs_example.png)
 
-<DFS 메인 함수>  
+DFS 메인 함수  
+
 ```
 DFS(G)
   // 모든 vertex 초기화
@@ -187,7 +188,8 @@ DFS(G)
       DFS-VISIT(G, u)
 ```  
 
-<DFS 탐색 함수 - DFS-VISIT>  
+DFS 탐색 함수 - DFS-VISIT  
+
 ```
 DFS-VISIT(G, u)
   // Discovered  
@@ -229,18 +231,38 @@ Aggregate Analysis에 의해서 $O(|V|*|E|)$가 아님을 알 수 있음.
   새 정점을 발견할 때 사용된 edge  
 2. Back Edge
   Nontree edge이면서, 한 정점에서 자신의 ancestor로 가는 edge  
-  Cycle 탐지 시 이용  
-
+  Back Edge가 있으면, Cycle이 존재한다.
 3. Forward Edge
   Nontree edge이면서, 한 정점에서 이미 방문한 descendant로 가는 edge  
+  쉽게 말해, 조상에서 자손으로 다이렉트로 가는 edge이다.  
 4. Cross Edge
   서로 조상-자손 관계가 없는 정점 사이를 잇는 간선  
 
+일반적으로 분류는 WHITE, GRAY, BLACK의 색깔로 그냥 tree edge인지, back edge인지, forward/cross edge인지 나누는 방식으로 진행된다.  
+예를 들어, Black이 된 vertex에서 조상 vertex(GRAY vertex)로 가는 edge가 있다면 Back Edge로 판단한다.  
+혹은 조상 vertex(GRAY vertex)에서 이미 Black처리된 자손 vertex로 가는 edge는 forward edge로 판단한다.  
 
 ## Applications  
 
 ### Connected components  
+undirected graph에서 `connected component`는 노드 집합에서 모든 노드 쌍 간에 path가 만들어지는 가장 큰 노드 집합을 말한다.  
+예를 들면, 어떤 노드는 다른 노드들에 reachable한 상황을 말한다.  
+이러한 Connected component를 식별하는 방법은 DFS를 돌리는 것이다.  
+DFS를 돌리면 depth-first forest가 만들어지고, 그래프 G가 connected component를 가진 많은 트리로 구성되었음을 확인할 수 있기 때문이다.  
 
+DFS와 DFS-VISIT 소스코드에서  
+cc 속성과 k를 변수로 추가하여, 동일한 connected component에 있는지, 총 몇 개의 vertex들이 연결되었는지 파악한다.  
 
 ### Topological sort  
-Acyclic 증명 = > DFS 이용 => DFS에서 Back Edge 있으면 Acyclic 아님 (=cycle 있음)
+DAG(Directed Acyclic Graph)가 주어지면, 그래프 내의 모든 vertex에 대해서 linear ordering을 생성한다.  
+이때, 그래프 G가 edge(u, v)를 가진다면, u는 v가 ordering 되기 전에 나타나야 한다.  
+
+DAG는 이벤트 간의 선후관계나 의존성을 파악하는 application들에 주로 이용된다.  
+
+**Topological Sort의 필요조건**  
+만약 cycle이 있다면, linear ordering이 불가능하다.  
+그러면 Acyclic 증명해야 하고, 이는 DFS를 이용해 Back Edge 있으면 Acyclic 아님 (=cycle 있음)을 증명하자.  
+
+**Topological Sort 문제 해결 방법**  
+1. 0 in-degree를 가지는 것을 left에서부터 배치한다.  
+2. 그래프 G에 대해서 DFS를 돌리고, finishing time의 오름차순으로 오른쪽에서부터 채운다.  
