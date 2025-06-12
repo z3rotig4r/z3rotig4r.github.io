@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Algorithm] 12. Shortest Path: Bellman-Ford's Algorithm"
+title: "[Algorithm] 12. Shortest Path (2): Bellman-Ford's Algorithm"
 date: 2025-06-05 15:06 +0900
 description: Bellman-Ford 알고리즘에 대해서 다룹니다.
 image:
