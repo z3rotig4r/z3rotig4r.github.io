@@ -117,9 +117,20 @@ source vertex에서 가장 가까운 vertex를 선택해 Greedy Approach를 진�
 ```
 DIJKSTRA(G, w, s)
   INIT-SINGLE-SOURCE(G, s)
-  S = 
-```
+  S = ∅
+  Q = G.V   // Priority Queue에 정점을 집어넣는다. 당연히 시작 정점 기준 오름차순으로 정렬.(Min-Binary-Heap 씀)
+  while Q ≠ ∅
+    u = EXTRACT-MIN(Q)
+    S = S ∪ {u}
+    for each vertex v ∈ G.Adj[u]
+      RELAX(u, v, w)
+```  
 
-
-## Bellman-Ford's Algorithm  
+### Time Complexity of Dijkstra  
+Priority Queue가 구현된 방식에 따라 시간복잡도가 좌우된다.  
+물론 Array 기반으로 구현되었으면, $O(V^2)$을 가지는데, 이렇게 구현할 필요는 없고, 일반적인 Binary heap 기반 구현을 하면 아래와 같은 시간복잡도를 가진다.  
+$$O(V \lg V + E \lg V)$$  
+Extract-Min(Q): $O(\lg V)$  
+Decrease-Key(Q, v): $O(\lg V)$  
+Building the min-heap: $O(V)$  
 
