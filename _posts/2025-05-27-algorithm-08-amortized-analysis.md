@@ -137,7 +137,7 @@ Aggregate Analysis: Amortized costs가 연산 종류가 달라도 모두 동일
 Accounting Method: Amortized costs가 연산 종류에 따라 달라짐  
 
 `Credit` 개념을 도입해서, 일종의 prepaid cost를 계산함.  
-amortized cost ($\hat c$)
+amortized cost ($\hat c$)와 actual cost $c$의 
 
 ### Ex 1) Stack with Multipop  
 
