@@ -76,13 +76,7 @@ cf. IND-CPAD: Phase 2에서의 한 두차례 가량의 Decryption 질의가 가�
 
 일반적으로, IND-CPA에 대해 안전한 스킴을 설계하는 것을 목표로 합니다.  
 
-## 2. Lattice-based Cryptography  
-
-현대 암호는 Lattice라는 수학적 구조를 기반으로 한 암호를 사용합니다.  
-
-
-
-## 3. Mathematical Background  
+## 2. Mathematical Background  
 
 ### Monoid vs Group vs Ring vs Field  
 
@@ -91,6 +85,16 @@ cf. IND-CPAD: Phase 2에서의 한 두차례 가량의 Decryption 질의가 가�
 - 역원: $\forall x \in S, \; x * a = e$를 만족하는 $x$  
 
 1. Monoid  
+`모노이드`는 하나의 이항 연산자(Binary Operation)에 대하여, 어떤 수에 대한 집합 S가 아래 조건을 만족하는 대수적 구조  
+- S 내 모든 원소가 정의된 이항 연산자에 대하여 결합법칙을 만족  
+- 집합 S 내에 항등원이 존재  
 2. Group  
+`군`은 하나의 이항 연산자에 대하여, 어떤 수에 대한 집합 G가 아래 조건을 만족하는 대수적 구조  
+- 집합 G가 이항 연산자에 대하여 모노이드  
+- 집합 G 내의 원소에 각각의 역원이 존재  
+cf. Abelian Group: 이항 연산자에 대하여 집합 G가 교환법칙(Commutativity)을 만족하는 구조  
 3. Ring  
+`환`은 `두 개의 이항 연산자`에 대하여 정의합니다. 일반적으로 +, x 에 대하여 정의합니다.  
+
+cf. 행렬 집합도 Ring  
 4. Field  
