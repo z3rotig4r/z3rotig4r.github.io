@@ -8,7 +8,7 @@ image:
   alt: Dijkstra_algorithm
 category: [Computer Science, Algorithm]
 tags: [SSSP, Dijkstra's Algorithm]
-pin: true
+pin: false
 math: true
 mermaid: true
 toc: true

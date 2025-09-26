@@ -8,7 +8,7 @@ image:
   alt: Bellman-Ford Algorithm
 category: [Computer Science, Algorithm]
 tags: [Bellman-Ford, SSSP]
-pin: true
+pin: false
 math: true
 mermaid: true
 toc: true

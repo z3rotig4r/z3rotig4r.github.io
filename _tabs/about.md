@@ -9,15 +9,15 @@ order: 4
 <strong>중앙대학교 산업보안학과 재학</strong>  
 <strong>중앙대학교 소프트웨어학부 복수전공</strong>  
 
-<strong>Curriculum Vitae</strong>: 📋[CV_수정중](/assets/CV(조영범).docx)
+<strong>Curriculum Vitae</strong>: 📋[CV_수정중]()
 
 ## 📝 Skill & Interest  
 ---
 1. Skill  
-2. Interest  
+2. Interest
 
 
-## 💻 Work Experience & Training Course with Projects  
+## 💻 Work Experience  
 ---
 1. 육군 정보보호병(군단급 제대) 병장 만기 전역 (2023.02.13 ~ 2024.08.12)  
     <ul style="list-style-type: disc;">
@@ -55,14 +55,20 @@ order: 4
         </li>
     </ul>
 
-2. 금융보안 아카데미 2024 [AI·데이터분석 트랙] (2024.07.19 ~ 2024.11.01)  
+2. ETRI(한국전자통신연구원) 하계 연구 연수생 (2025.07.01 ~ 2025.08.31)  
+    - IC칩의 HW Trojan 자동 탐지 기술 연구(Formal Verification 기반)  
+    - CKKS 기반 FHE(동형암호) 동향 연구 및 OpenFHE 기반 구현 분석  
+
+3. 학부연구생 @___ (2025.09.27 ~)
+
+## 🎯 Training Course  
+---  
+1. 금융보안 아카데미 2024 [AI·데이터분석 트랙] (2024.07.19 ~ 2024.11.01)  
     - 데이터 시각화 및 전처리
     - ML를 이용한 데이터 분석  
     - DL 및 NLP 기법  
     - 데이터 가명처리  
     - AI 보안 기법  
-
-3. (예정)  
 
 ## 🔒 Personal/Team Experience & Projects  
 ---
@@ -74,11 +80,13 @@ order: 4
     - 아동/청소년층을 위한 뉴스 소비 모델 개발(예정) [GITHUB 링크](https://github.com/CUAI-CAU)  
     - NLP 논문 리뷰 스터디 [GITHUB 링크](https://github.com/CUAI-CAU)
 4. 서울시립청소년센터 서울AI메이커 2기  
-    - AI 윤리 교육(AI 편향성, AI 범죄, 프라이버시 등)
+    - AI 윤리 교육(AI 편향성, AI 범죄, 프라이버시 등)  
+    - AI 기반 게임 제작(프론트엔드)
 
 ## 🏆 Prize  
 1. 금융보안 아카데미 2024 우수상 (2024.11.01)  
-2. FSI AIxData Challenge 2024 공모전 트랙 우수상 (2024.11.07)
+2. FSI AIxData Challenge 2024 공모전 트랙 우수상 (2024.11.07)  
+3. 2025년 가명정보 활용 경진대회 [기술부문] 대상 - 과기정통부 장관상 (2025.09.30)  
 
 ## 🚩 Certificate  
 ---
@@ -86,4 +94,5 @@ order: 4
 - 한국사능력검정시험 1급 (2023.08.26)
 - ADsP(데이터분석준전문가) (2024.06.07)
 - OPIc IM2 (2024.11.20)
-- TOEIC Speaking AL[Score: 160] (2024.11.24) 
+- TOEIC Speaking AL[Score: 160] (2024.11.24)  
+- TEPS[Score: 347] (2025.09.26)  

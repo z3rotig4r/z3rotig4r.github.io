@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: Z3roPrivacy Lab by z3rotig4r # the main title
 
-tagline: 안전한 데이터 환경을 꿈꾸는 연구/개발자를 목표로 공부하고 있습니다. CS/AI/Security 분야 학사 과목 정리 및 관련 Paper Review를 위주로 포스팅합니다. # it will display as the subtitle
+tagline: 안전한 데이터 환경을 꿈꾸는 연구/개발자를 목표로 공부하고 있습니다. CS/AI/Security 분야 과목 정리 및 관련 분야 Paper Review 위주로 포스팅합니다. # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.

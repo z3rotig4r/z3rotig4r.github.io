@@ -8,7 +8,7 @@ image:
   alt: Minimum Spanning Tree
 category: [Computer Science, Algorithm]
 tags: [MST, Kruskal's Algorithm, Prim's Algorithm]
-pin: true
+pin: false
 math: true
 mermaid: true
 toc: true
