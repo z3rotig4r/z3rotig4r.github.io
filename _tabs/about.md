@@ -9,7 +9,7 @@ order: 4
 <strong>중앙대학교 산업보안학과 재학</strong>  
 <strong>중앙대학교 소프트웨어학부 복수전공</strong>  
 
-<strong>Curriculum Vitae</strong>: 📋[CV_수정중]()
+<strong>Curriculum Vitae</strong>: 📋[CV_수정중]
 
 ## 📝 Skill & Interest  
 ---
@@ -95,4 +95,4 @@ order: 4
 - ADsP(데이터분석준전문가) (2024.06.07)
 - OPIc IM2 (2024.11.20)
 - TOEIC Speaking AL[Score: 160] (2024.11.24)  
-- TEPS[Score: 347] (2025.09.26)  
+- TEPS[Score: 347] (2025.09.26)   
