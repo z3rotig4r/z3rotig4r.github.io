@@ -10,4 +10,15 @@ math: true
 mermaid: true
 toc: true
 ---  
-## 1. 
+## 1. Types of Games  
+
+## 2. Minimax Adversarial Search  
+
+## 3. Improving the efficiency of Minimax: Alpha-Beta Pruning  
+
+
+## 4. Depth-limited search & Evaluation function  
+
+
+## 5. Expectimax Adversarial Search  
+상대방이 최적이 아닌, 확률적으로 움직이는 것을 `기대`  
