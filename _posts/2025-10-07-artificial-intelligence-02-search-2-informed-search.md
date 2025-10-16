@@ -6,7 +6,7 @@ description: RL(강화학습)의 토대인 탐색 알고리즘, 특히 정보가
 image:
   path: assets/img/contents/AI/a_star.png
   alt: A* search
-category: [Computer Science, RL]
+category: [Computer Science, Reinforcement Learning]
 tags: [search, tree, graph, heuristics, A*, graph search]
 pin: false
 math: true
