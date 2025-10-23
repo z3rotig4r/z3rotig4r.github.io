@@ -57,7 +57,7 @@ eg. 만약 다음과 같은 PacMan 게임이
   Edge: transition을 표현(action에 대한 결과)  
   ![state space graph](assets/img/contents/AI/state_space_graph.png)   
   각 state는 오직 한번 일어나며, 너무 커서 full graph를 메모리에 빌드하기 어려움  
-  따라서, 일반적으로 작은 search graph를 불어와 해결하는 아이디어는 유용함  
+  따라서, 일반적으로 작은 search graph를 불러와 해결하는 아이디어는 유용함  
 
 2. Search Tree => plan이 노드  
   `what if tree of plans and their outcomes`  
@@ -82,8 +82,8 @@ eg. 만약 다음과 같은 PacMan 게임이
   2. partial plans의 outer frontier는 유지  
   3. `선택된 노드`를 제거하면서 frontier를 확장시키고, 모든 자식 노드들로 frontier를 교체  
 - 일반적인 frontier 탐색 전략(위에서 선택된 노드를 어떻게 고르는지)에 따른 탐색 알고리즘의 분류  
-  1. DFS => Queue를 통한 FIFO  
-  2. BFS => Stack을 활용한 LIFO  
+  1. DFS => Stack을 활용한 LIFO  
+  2. BFS => Queue를 통한 FIFO  
   3. UCS(Dijkstra) => Priority Queue를 활용해 특정 기준(비용)에 따라 우선순위가 높은 노드 먼저 꺼냄  
   cf. A* Search는 휴리스틱이 그 기준이 되어서 먼저 꺼낼 노드를 정함  
 
