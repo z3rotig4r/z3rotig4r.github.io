@@ -23,13 +23,13 @@ order: 4
     <ul style="list-style-type: disc;">
         <li>보안 관제 및 CERT 업무(NAC, UTM, PMS, EPP, SIEM, etc.) 
         </li>
-        <li> UNIX/WINDOWS 서버 취약점 점검 및 분석  
+        <li> LINUX/WINDOWS 서버 취약점 점검 및 분석  
             <ol>
                 <li>
-                TICN 서버(TMCS, LCTRS, NCS, TIPS, CNRS) 취약점 점검 
+                LINUX 기반 TICN 서버(TMCS, LCTRS, NCS, TIPS, CNRS) 취약점 점검 
                 </li>
                 <li>
-                화상회의 서버 취약점 점검
+                WINDOWS 기반 화상회의 서버 취약점 점검
                 </li>
             </ol>
         </li>        
@@ -37,17 +37,17 @@ order: 4
             <ol>
                 <li> 상급부대 사이버 상황 전파 웹페이지 크롤링을 통한 게시글 알림 및 내용 확인 기능 구현
                 </li>
-                <li> Genian NAC 웹 페이지 크롤링을 통한 NAC 센서 DOWN 상태 알림 기능 구현
+                <li> Genian NAC 관리자 웹 페이지 크롤링을 통한 NAC 센서 DOWN 상태 알림 기능 구현
                 </li>
-                <li> PyQt 프레임워크를 활용한 GUI 개발 
+                <li> PyQt 프레임워크를 활용한 크롤링 기반 관제 서비스 GUI 개발 
                 </li>
             </ol>
         </li>
         <li> 서버 백업 자동화 프로젝트
             <ol>
-                <li> UNIX 계열의 쉘파일, Windows 계열의 배치파일 활용한 백업 자동화 코드 구현  
+                <li> 쉘파일 및 bat파일 활용한 서버 백업 자동화 코드 구현  
                 </li>
-                <li> Crontab 기능 및 작업 스케줄러를 활용한 자동화  
+                <li> crontab 기능 및 작업 스케줄러를 활용한 자동화  
                 </li>
             </ol>
         </li>
@@ -59,7 +59,6 @@ order: 4
     - IC칩의 HW Trojan 자동 탐지 기술 연구(Formal Verification 기반)  
     - CKKS 기반 FHE(동형암호) 동향 연구 및 OpenFHE 기반 구현 분석  
 
-3. 학부연구생 @___ (2025.09.27 ~)
 
 ## 🎯 Training Course  
 ---  
@@ -73,7 +72,7 @@ order: 4
 ## 🔒 Personal/Team Experience & Projects  
 ---
 1. FSI AIxData Challenge 2024 [데이터 분석 경진대회 트랙]  
-    - 
+    - 합성데이터를 활용한 데이터 불균형 문제를 해결하고 ML 기반의 이상탐지모델 개발   
 2. FSI AIxData Challenge 2024 [공모전 트랙]  
     - [FSI AIxData Challenge 2024 공모전 수상후기](https://z3rotig4r.github.io/posts/fsi2024-review/)
 3. CUAI(중앙대학교 AI 학술 동아리) 8기 [NLP Advanced Track]
@@ -96,3 +95,4 @@ order: 4
 - OPIc IM2 (2024.11.20)
 - TOEIC Speaking AL[Score: 160] (2024.11.24)  
 - TEPS[Score: 347] (2025.09.26)   
+- SQLD(SQL 개발자) (2026.03.27)
