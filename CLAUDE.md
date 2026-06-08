@@ -20,3 +20,5 @@ Jekyll/Chirpy 기반 AI 보안 기술 블로그. 정체성: AI Red Teaming · LL
 | 날짜 | 변경 내용 | 대상 | 사유 |
 |------|----------|------|------|
 | 2026-06-08 | 초기 구성 (agents 5, skills 5) | 전체 | AI 보안 블로그 포스팅 하네스 신규 구축 |
+| 2026-06-09 | image-designer 에이전트 + og-image 스킬 추가 (gpt-image-1 OG 커버) | agents/image-designer, skills/og-image, blog-orchestrator | 신규 글 검색 카드용 OG 배너 자동 생성 (로컬 OPENAI_API_KEY) |
+| 2026-06-09 | 뉴스 스크랩 강화 (국내2:해외8, 한글번역, 출처필수, linkcheck) | agents/news-scout, skills/news-scrap | 해외 번역 다이제스트로 접근성·CTR↑, 죽은 링크 게이트 |
