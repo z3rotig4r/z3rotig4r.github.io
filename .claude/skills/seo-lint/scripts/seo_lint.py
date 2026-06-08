@@ -85,6 +85,15 @@ def lint(path: str):
         fails.append(f"date 형식 오류: '{date}' (YYYY-MM-DD HH:MM +0900)")
     elif not is_post and not DATE_RE.match(date):
         warns.append("date 미설정 (draft → 발행 시 확정)")
+    # 미래 날짜 가드: 프로덕션 빌드는 future:false 라 미래 글을 통째로 제외 → 라이브에서 사라짐.
+    if is_post and DATE_RE.match(date):
+        try:
+            import datetime
+            pub = datetime.datetime.strptime(date, "%Y-%m-%d %H:%M %z")
+            if pub > datetime.datetime.now(pub.tzinfo):
+                fails.append(f"date 가 미래({date}) — 프로덕션 빌드에서 제외되어 라이브에 안 보임")
+        except ValueError:
+            pass
 
     if "image" not in fm and "image:" not in text.split("---")[1]:
         warns.append("OG image.path 없음 (검색 카드 약화)")
