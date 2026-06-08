@@ -30,6 +30,7 @@ jobs:
 
       - name: Lint changed posts (SEO/front matter)
         run: |
+          git config core.quotepath false   # 한글 파일명이 \xxx 로 이스케이프되어 glob 누락되는 것 방지
           base="${{ github.event.pull_request.base.sha }}"
           head="${{ github.event.pull_request.head.sha }}"
           if [ -z "$base" ]; then base="origin/main"; fi

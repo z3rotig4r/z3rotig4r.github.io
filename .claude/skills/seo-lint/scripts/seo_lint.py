@@ -53,6 +53,12 @@ def lint(path: str):
     if not title:
         fails.append("title 없음/빈값")
 
+    # Archive = 격리된 레거시 글(과목정리·cert·후기). 신규 SEO 규약(description/tags/OG)을
+    # 소급 적용하지 않는다 — 발행 게이트는 신규 콘텐츠 품질만 보장. title 존재만 확인하고 통과.
+    cats_early = parse_list(fm.get("category", ""))
+    if cats_early and cats_early[0] == "Archive":
+        return fails, ["Archive(레거시) — SEO 규약 검사 면제"]
+
     desc = fm.get("description", "").strip().strip('"')
     if not desc:
         fails.append("description 없음/빈값")
