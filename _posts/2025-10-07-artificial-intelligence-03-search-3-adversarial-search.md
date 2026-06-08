@@ -6,7 +6,7 @@ description: 두 개 이상의 에이전트가 서로 적대적인 관계를 가
 image:
   path: assets/img/contents/AI/alph_beta_pruning.png
   alt: alpha-beta pruning
-category: [Computer Science, Reinforcement Learning]
+category: [Archive, Reinforcement Learning]
 tags: [adversarial search, alpha-beta pruning, minimax, expectimax]
 pin: false
 math: true

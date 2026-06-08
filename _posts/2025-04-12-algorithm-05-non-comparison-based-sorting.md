@@ -6,7 +6,7 @@ description:
 image:
   path: assets/img/contents/Algorithm/non_comparison_based_sort.png
   alt: Non-Comparison-based Sort
-category: [Computer Science, Algorithm]
+category: [Archive, Algorithm]
 tags: [Counting Sort, Radix Sort, Non-comparison-base sorting, Stability]
 pin: false
 math: true

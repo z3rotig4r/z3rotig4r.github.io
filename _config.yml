@@ -6,7 +6,7 @@ theme: jekyll-theme-chirpy
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: en
+lang: ko
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: Asia/Seoul
@@ -14,12 +14,12 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Z3roPrivacy Lab by z3rotig4r # the main title
+title: z3rotig4r AI Security Lab # the main title
 
-tagline: 안전한 데이터 환경을 꿈꾸는 연구/개발자를 목표로 공부하고 있습니다. CS/AI/Security 분야 과목 정리 및 관련 분야 Paper Review 위주로 포스팅합니다. # it will display as the subtitle
+tagline: AI 레드티밍 · LLM/Agentic AI 보안 · AI for Security best-practice와 최신 AI 보안 연구·뉴스를 정리합니다. # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  AI 레드티밍(AI Red Teaming), LLM·Agentic AI 보안, AI for Security best-practice와 국내외 신뢰도 높은 소스의 최신 AI 보안 연구·뉴스를 정리하는 z3rotig4r의 기술 블로그.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -212,6 +212,10 @@ exclude:
   - tools
   - README.md
   - LICENSE
+  - CLAUDE.md
+  - .claude
+  - _workspace
+  - _workspace_prev
   - "*.config.js"
   - package*.json
 

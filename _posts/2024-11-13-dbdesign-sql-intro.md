@@ -6,7 +6,7 @@ description:
 image:
   path: /assets/img/contents/DBDesign/sql_intro.png
   alt: sql_intro
-category: [Computer Science, DB Design]
+category: [Archive, DB Design]
 tags: [SQL]
 pin: false
 math: true

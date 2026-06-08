@@ -6,7 +6,7 @@ description: 자료구조의 개요 부분입니다.
 image:
   path: assets/img/contents/Data_Structure/adt.png
   alt: adt
-category: [Computer Science, Data Structure]
+category: [Archive, Data Structure]
 tags: [ADT, sorting]
 pin: false
 math: true

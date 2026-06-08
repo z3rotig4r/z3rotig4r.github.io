@@ -1,0 +1,70 @@
+name: "SEO & Build Check"
+# PR에서 빌드 안전성 + 변경된 포스트의 SEO/front matter 규약을 검증.
+# LLM 드래프팅은 하지 않음(로컬 전용). 이 워크플로는 검증 게이트 전용.
+on:
+  pull_request:
+    branches: [main, master]
+    paths:
+      - "_posts/**"
+      - "_drafts/**"
+      - "_config.yml"
+      - ".github/workflows/seo-check.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seo-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Lint changed posts (SEO/front matter)
+        run: |
+          git config core.quotepath false   # 한글 파일명이 \xxx 로 이스케이프되어 glob 누락되는 것 방지
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          if [ -z "$base" ]; then base="origin/main"; fi
+          changed=$(git diff --name-only --diff-filter=AM "$base" "$head" -- '_posts/*.md' '_drafts/*.md' || true)
+          if [ -z "$changed" ]; then
+            echo "변경된 포스트 없음 — seo-lint 건너뜀"; exit 0
+          fi
+          echo "검사 대상:"; echo "$changed"
+          python3 .claude/skills/seo-lint/scripts/seo_lint.py $changed
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+
+      - name: Build site
+        run: bundle exec jekyll b -d "_site"
+        env:
+          JEKYLL_ENV: "production"
+
+      - name: Test site (internal links/images, sitemap, feed)
+        run: |
+          bundle exec htmlproofer _site \
+            --disable-external \
+            --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+          test -f _site/sitemap.xml || { echo "sitemap.xml 누락"; exit 1; }
+          test -f _site/feed.xml || { echo "feed.xml 누락"; exit 1; }
+          test -f _site/robots.txt || { echo "robots.txt 누락"; exit 1; }

@@ -6,7 +6,7 @@ description:
 image:
   path: assets/img/contents/Algorithm/comparison_of_sorting_algorithms.png
   alt: comparison_of_sorting_algorithms
-category: [Computer Science, Algorithm]
+category: [Archive, Algorithm]
 tags: [Algorithm, Sorting Algorithm, Complexity]
 pin: false
 math: true

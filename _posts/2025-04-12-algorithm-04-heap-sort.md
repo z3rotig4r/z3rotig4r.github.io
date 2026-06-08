@@ -6,9 +6,9 @@ description:
 image:
   path: assets/img/contents/Algorithm/heap_sort.png
   alt: Heap Sort
-category: [Computer Science, Algorithm]
+category: [Archive, Algorithm]
 tags: [Heap Sort, Max-heapify, Priority Queue]
-pin: true
+pin: false
 math: true
 mermaid: true
 toc: true

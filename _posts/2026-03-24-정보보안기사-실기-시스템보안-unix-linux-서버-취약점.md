@@ -1,0 +1,12 @@
+---
+layout: post
+title: "[정보보안기사 실기] 시스템보안: UNIX/Linux 서버 취약점"
+date: 2026-03-24 12:14 +0900
+description: 
+category: [Archive, 정보보안기사]
+tags: []
+pin: false
+math: true
+mermaid: true
+toc: true
+---

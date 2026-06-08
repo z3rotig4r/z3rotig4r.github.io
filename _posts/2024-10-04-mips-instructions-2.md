@@ -6,7 +6,7 @@ description:
 image:
   path: /assets/img/contents/mips_green_card.jpg
   alt: mips_green_card
-category: [Computer Science, Computer Architecture]
+category: [Archive, Computer Architecture]
 tags: [comp_arch, MIPS, ISA]
 pin: false
 math: true

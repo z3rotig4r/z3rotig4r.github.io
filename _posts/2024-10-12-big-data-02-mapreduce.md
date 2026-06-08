@@ -6,7 +6,7 @@ description:
 image:
   path: /assets/img/contents/MapReduce_Overview.png
   alt: MapReduce
-category: [Computer Science, Big Data]
+category: [Archive, Big Data]
 tags: [Big Data, MapReduce]
 pin: false
 math: true

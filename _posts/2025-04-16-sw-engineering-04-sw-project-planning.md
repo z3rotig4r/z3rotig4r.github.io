@@ -3,7 +3,7 @@ layout: post
 title: "[SW Engineering] 04. SW Project Planning"
 date: 2025-04-16 16:20 +0900
 description: SW 프로젝트 계획입니다.
-category: [Computer Science, SW Engineering]
+category: [Archive, SW Engineering]
 tags: [Delphi, LOC, COCOMO, FP]
 pin: false
 math: true

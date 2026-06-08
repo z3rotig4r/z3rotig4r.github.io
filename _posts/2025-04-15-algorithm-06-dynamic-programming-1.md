@@ -6,9 +6,9 @@ description:
 image:
   path: assets/img/contents/Algorithm/dynamic_programming.png
   alt: dynamic_programming
-category: [Computer Science, Algorithm]
+category: [Archive, Algorithm]
 tags: [Dynamic Programming, Rod Cutting, Matrix-Chain Multiplication, Memoization, Tabulation]
-pin: true
+pin: false
 math: true
 mermaid: true
 toc: true

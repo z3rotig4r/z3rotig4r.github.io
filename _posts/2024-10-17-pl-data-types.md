@@ -3,7 +3,7 @@ layout: post
 title: "Concepts of Programming Languages 05: Data Types"
 date: 2024-10-17 01:17 +0900
 description: 
-category: [Computer Science, Concepts of Programming Languages]
+category: [Archive, Concepts of Programming Languages]
 tags: [Programming Languages, Date Types]
 pin: false
 math: true

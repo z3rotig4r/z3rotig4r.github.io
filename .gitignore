@@ -23,3 +23,7 @@ package-lock.json
 !.vscode/tasks.json
 
 # Misc
+
+# harness scratch (not for publish)
+_workspace/
+_workspace_prev/

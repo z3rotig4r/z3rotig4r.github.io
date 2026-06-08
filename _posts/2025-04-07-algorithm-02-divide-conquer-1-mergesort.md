@@ -6,7 +6,7 @@ description: 분할/정복 알고리즘 중 병합 정렬과 점화식에 대해
 image:
   path: /assets/img/contents/Algorithm/merge_sort.png
   alt: merge_sort
-category: [Computer Science, Algorithm]
+category: [Archive, Algorithm]
 tags: [merge sort, recurrence]
 pin: false
 math: true

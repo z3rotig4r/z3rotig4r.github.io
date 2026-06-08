@@ -2,7 +2,7 @@
 layout: post
 title: 'Computer Architecture 03: Arithmetic for Computers (1) - add, sub, mul and div'
 date: 2024-10-19 14:23 +0900
-category: [Computer Science, Computer Architecture]
+category: [Archive, Computer Architecture]
 tags: [comp_arch, arithemetic]
 pin: false
 math: true

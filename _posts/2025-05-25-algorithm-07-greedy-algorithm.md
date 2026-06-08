@@ -6,7 +6,7 @@ description: 매 순간 최선의 선택을 하는 그리디 알고리즘을 다
 image:
   path: assets/img/contents/Algorithm/activity_selection_prob.png
   alt: Greedy Example(activity_selection)
-category: [Computer Science, Algorithm]
+category: [Archive, Algorithm]
 tags: [Greedy]
 pin: false
 math: true

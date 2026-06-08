@@ -6,7 +6,7 @@ description: 정보보호란 무엇인지, 암호학이란 무엇인지, 어떤 
 image:
   path: assets/img/contents/Cryptography/Asymmetric Encryption.png
   alt: Asymmetric Encryption(비대칭키 암호화)
-category: [Computer Science, Cryptography]
+category: [Archive, Cryptography]
 tags: [Cryptography]
 pin: false
 math: true
