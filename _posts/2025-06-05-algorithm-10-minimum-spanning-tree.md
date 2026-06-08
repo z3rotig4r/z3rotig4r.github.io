@@ -6,7 +6,7 @@ description: Minimum Spanning Tree와 대표적인 알고리즘인, Kruskal과 P
 image:
   path: assets/img/contents/Algorithm/mst.png
   alt: Minimum Spanning Tree
-category: [Computer Science, Algorithm]
+category: [Archive, Algorithm]
 tags: [MST, Kruskal's Algorithm, Prim's Algorithm]
 pin: false
 math: true

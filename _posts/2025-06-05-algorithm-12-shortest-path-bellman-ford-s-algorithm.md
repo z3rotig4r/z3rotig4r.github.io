@@ -6,7 +6,7 @@ description: Bellman-Ford 알고리즘에 대해서 다룹니다.
 image:
   path: assets/img/contents/Algorithm/bell-fordman_algorithm.png
   alt: Bellman-Ford Algorithm
-category: [Computer Science, Algorithm]
+category: [Archive, Algorithm]
 tags: [Bellman-Ford, SSSP]
 pin: false
 math: true

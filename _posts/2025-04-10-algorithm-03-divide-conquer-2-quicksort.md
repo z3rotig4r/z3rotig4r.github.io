@@ -6,9 +6,9 @@ description: 분할/정복 알고리즘 중 퀵 소트에 대해서 다룹니다
 image:
   path: assets/img/contents/Algorithm/quick_sort.png
   alt: quick_sort
-category: [Computer Science, Algorithm]
+category: [Archive, Algorithm]
 tags: [quick sort, DnQ]
-pin: true
+pin: false
 math: true
 mermaid: true
 toc: true

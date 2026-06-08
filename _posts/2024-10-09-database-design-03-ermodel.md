@@ -6,7 +6,7 @@ description:
 image:
   path: /assets/img/contents/ER_model.png
   alt: example of ER Modeling
-category: [Computer Science, DB Design]
+category: [Archive, DB Design]
 tags: []
 pin: false
 math: true

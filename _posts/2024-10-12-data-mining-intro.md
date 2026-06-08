@@ -6,7 +6,7 @@ description:
 image:
   path: /assets/img/contents/BigData_Landscape.png
   alt: bigdata landscape
-category: [Computer Science, Big Data]
+category: [Archive, Big Data]
 tags: [Big Data]
 pin: false
 math: true

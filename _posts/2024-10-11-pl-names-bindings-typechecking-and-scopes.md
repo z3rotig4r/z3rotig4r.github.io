@@ -6,7 +6,7 @@ description:
 image:
   path: /assets/img/contents/pl_syntax.png
   alt: Ambiguous Expression Grammar
-category: [Computer Science, Concepts of Programming Languages]
+category: [Archive, Concepts of Programming Languages]
 tags: [Programming Languages, Scope, Lifetime, Typechecking, Binding]
 pin: false
 math: true

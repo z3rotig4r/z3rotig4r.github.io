@@ -6,9 +6,9 @@ description: 그래프와 그래프 탐색 알고리즘인, DFS와 BFS 알고리
 image:
   path: /assets/img/contents/Algorithm/graph_intro.png
   alt: graph_intro
-category: [Computer Science, Algorithm]
+category: [Archive, Algorithm]
 tags: [DFS, BFS, Graph Theory]
-pin: true
+pin: false
 math: true
 mermaid: true
 toc: true

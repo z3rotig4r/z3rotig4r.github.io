@@ -6,7 +6,7 @@ description: 다익스트라 알고리즘에 대해 다룹니다.
 image:
   path: assets/img/contents/Algorithm/dijkstra_algorithm.png
   alt: Dijkstra_algorithm
-category: [Computer Science, Algorithm]
+category: [Archive, Algorithm]
 tags: [SSSP, Dijkstra's Algorithm]
 pin: false
 math: true

@@ -6,7 +6,7 @@ description: 분할 상환 분석 방법론을 다룹니다.
 image:
   path: /assets/img/contents/Algorithm/amortized.png
   alt: amortized example
-category: [Computer Science, Algorithm]
+category: [Archive, Algorithm]
 tags: [Amortized Analysis]
 pin: false
 math: true

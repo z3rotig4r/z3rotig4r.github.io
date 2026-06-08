@@ -6,7 +6,7 @@ description:
 image:
   path: /assets/img/contents/comp_arch_textbook.png
   alt: comp_arch_textbook
-category: [Computer Science, Computer Architecture]
+category: [Archive, Computer Architecture]
 tags: [comp_arch, MIPS, ISA]
 pin: false
 math: true

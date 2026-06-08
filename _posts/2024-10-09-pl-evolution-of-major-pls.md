@@ -6,7 +6,7 @@ description:
 image:
   path: /assets/img/contents/pl_history.jpg
   alt: history of PLs
-category: [Computer Science, Concepts of Programming Languages]
+category: [Archive, Concepts of Programming Languages]
 tags: [Programming Languages, History]
 pin: false
 math: true

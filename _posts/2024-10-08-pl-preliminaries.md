@@ -6,7 +6,7 @@ description:
 image:
   path: /assets/img/contents/pl_preview.jpg
   alt: concepts of programming languages
-category: [Computer Science, Concepts of Programming Languages]
+category: [Archive, Concepts of Programming Languages]
 tags: [Programming Languages, Criteria]
 pin: false
 math: true
