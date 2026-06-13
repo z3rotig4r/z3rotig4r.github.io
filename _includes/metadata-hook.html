@@ -1,1 +1,30 @@
 <!-- A placeholder to allow defining custom metadata -->
+
+{%- comment -%}
+FAQPage 구조화 데이터(JSON-LD). front matter에 `faq:` 리스트(q/a)가 있으면
+구글 리치결과(FAQ rich result) + 생성형 엔진(GEO) 인용 가능성을 높인다.
+예:
+faq:
+  - q: "질문?"
+    a: "답변 텍스트."
+{%- endcomment -%}
+{%- if page.faq -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for item in page.faq -%}
+    {
+      "@type": "Question",
+      "name": {{ item.q | strip_html | normalize_whitespace | jsonify }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.a | strip_html | normalize_whitespace | jsonify }}
+      }
+    }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}
