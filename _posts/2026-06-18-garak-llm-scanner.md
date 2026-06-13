@@ -94,7 +94,17 @@ python -m garak --list_probes
 - 실패율이 높을수록 그 약점에 취약. 예: `dan` 실패율 80% = 탈옥 프롬프트 80%가 통과.
 - 모델·가드레일 변경 전후로 돌려 **회귀 비교**(가드레일이 실제로 막는지 수치 확인).
 
-JSONL은 시도별 입력·출력·판정을 담아 파이프라인에 물리기 좋다.
+터미널 요약은 대략 이렇게 찍힌다(예시):
+
+```text
+garak run: gpt2
+probes.dan.Dan_11_0                    dan.DAN                 pass  42/  50  (failrate 0.16)
+probes.promptinject.HijackHateHumans   promptinject.AttackRogue fail  31/  50  (failrate 0.38)
+probes.encoding.InjectBase64           encoding.DecodeMatch    fail  12/  20  (failrate 0.60)
+probes.leakreplay.LiteratureCloze      leakreplay.StartsWith   pass  47/  50  (failrate 0.06)
+```
+
+`failrate`가 곧 그 프로브의 ASR이다 — 위 예시는 인코딩 우회(0.60)·인젝션(0.38)에 취약하다는 뜻. JSONL은 시도별 입력·출력·판정을 담아 파이프라인에 물리기 좋다.
 
 ## 실무 시나리오 — 가드레일 회귀 게이트
 
