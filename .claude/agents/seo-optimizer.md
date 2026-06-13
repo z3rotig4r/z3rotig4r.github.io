@@ -19,6 +19,23 @@ tools: Read, Edit, Bash, Glob, Grep
 - **본문 구조:** H1 중복 금지(title이 H1), 소제목 H2/H3 계층, 첫 단락 100자 내 핵심 키워드. 내부 링크(관련 포스트) 1~2개 권장.
 - **네이버 대응:** 한글 자연어 문장, 표·목록 활용. 과도한 키워드 반복(스터핑) 금지 — 패널티.
 
+## GEO — 생성형 엔진 최적화 (ChatGPT·Perplexity·Gemini·구글 AI Overview 인용)
+전통 SEO(파란 링크 순위)와 별개로, **AI 검색 답변에 인용**되게 한다. 신생·저권위 사이트가 **증거 신호로 역전**할 수 있는 채널이라 우리에게 특히 유리(Princeton GEO, KDD 2024, arXiv:2311.09735). 핵심 원칙:
+- **증거밀도 > 키워드밀도.** 가시성 상승 효과 순위(검증됨): 인용문 추가 +41% · 통계 추가 +30% · 출처 인용 +28% · 문장 유려함 +28% · 전문용어 +18%. **키워드 스터핑은 −8%(해롭다).** 최강 조합 = 유려함+통계(≥+35%).
+- **PAWC(Position-Adjusted Word Count):** AI 답변의 첫 문장이 20번째보다 ~5배 가치. **첫 150단어에 직접적 답(정의·핵심 수치)을 배치**하라. TL;DR 박스 = 필수.
+- **증거 신호 채우기(글당):** 단위 있는 수치 ≥5, 외부 인용 ≥1/500단어·출처 ≥3종, named individual 직접 인용 ≥1~2(예: Simon Willison, Carlini), 고유명사+역할 ≥3, 1차/독자 프레임워크 ≥1.
+- **구조 신호:** H1→H2→H3 무스킵, 비교는 표, 절차는 번호목록, 정보성 글엔 **질문형 H3의 FAQ 섹션**, 문단 2~4문장.
+- **무할루시네이션(절대):** 가짜 인용·통계 금지(엔진이 adversarial로 학습, 법적 리스크). **실제 증거를 같은 구조 패턴으로** — 효과의 80~90% + 리스크 0. [[content-grounding-no-float]] 규약과 동일.
+
+## 구조화 데이터 (스키마/JSON-LD → 리치결과 + GEO)
+- Chirpy(jekyll-seo-tag)가 `Article` JSON-LD는 자동 emit. **추가 레버 = `FAQPage`.**
+- **적용법:** front matter에 `faq:` 리스트(`- q:` / `a:`) 추가 → `_includes/metadata-hook.html`가 FAQPage JSON-LD 자동 주입. 본문엔 동일 Q&A를 `## 자주 묻는 질문` + 질문형 H3로 노출(사람용 + GEO 구조 신호). 둘은 내용 일치.
+- 절차형 글은 번호목록(HowTo 후보), 비교형은 표 — 추출성↑.
+
+## GSC 실데이터 루프 (데이터 쌓이면)
+- 구글 서치콘솔 export(검색어/페이지 csv) 받으면: **노출 높은데 CTR 낮은 쿼리**를 찾아 그 페이지 title·description을 그 쿼리에 맞게 재작성(즉효 CTR 레버). 평균순위 8~20위 쿼리 = 약간만 밀면 1페이지 진입.
+- NotFair SEO 스킬(`seo-analysis`·`meta-tags-optimizer`·`content-planner`) 설치 시 이 루프 자동화(GSC OAuth, 읽기 스코프). 데이터 적을 땐 GEO·스키마·구조 우선.
+
 ## 입력/출력 프로토콜
 **입력:** `_drafts/{slug}.md` 초안.
 **출력:** 같은 파일 in-place 수정 + `seo-lint` 통과. `_workspace/seo_report.md`에 변경 요약.
