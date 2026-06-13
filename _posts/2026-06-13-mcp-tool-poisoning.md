@@ -25,7 +25,7 @@ image:
 > **TL;DR** — MCP(Model Context Protocol)에서 에이전트는 도구의 **설명(description)** 을 그대로 신뢰해 읽는다. 공격자는 이 설명 안에 사용자에게는 안 보이고 모델에게만 보이는 악성 지시를 심어 에이전트를 탈취한다. 이것이 **Tool Poisoning Attack(TPA)** 이다. 변종으로 승인 후 도구를 바꿔치는 **rug pull**, 신뢰 서버를 가로채는 **cross-server tool shadowing** 이 있다.
 {: .prompt-warning }
 
-## MCP가 만든 새 공격면
+## MCP가 만든 새 공격표면
 
 MCP(Model Context Protocol)는 Anthropic이 2024년 11월 공개한, LLM 애플리케이션과 외부 도구·데이터를 연결하는 표준 프로토콜이다. 에이전트는 MCP 서버가 등록한 도구 목록을 받고, 각 도구의 **이름·설명·파라미터 스키마**를 읽어 "언제 어떤 도구를 어떻게 쓸지" 판단한다.
 
