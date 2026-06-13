@@ -86,12 +86,18 @@ def lint(path: str):
     elif not is_post and not DATE_RE.match(date):
         warns.append("date 미설정 (draft → 발행 시 확정)")
     # 미래 날짜 가드: 프로덕션 빌드는 future:false 라 미래 글을 통째로 제외 → 라이브에서 사라짐.
+    # 단 `scheduled: true` 는 의도된 예약 발행(매일 cron 리빌드가 발행일에 자동 게시) → FAIL 대신 WARN.
+    scheduled = fm.get("scheduled", "").strip().lower() == "true"
     if is_post and DATE_RE.match(date):
         try:
             import datetime
             pub = datetime.datetime.strptime(date, "%Y-%m-%d %H:%M %z")
             if pub > datetime.datetime.now(pub.tzinfo):
-                fails.append(f"date 가 미래({date}) — 프로덕션 빌드에서 제외되어 라이브에 안 보임")
+                if scheduled:
+                    warns.append(f"예약 발행 — {date} 게시 예정(현재 미래라 빌드 제외, cron이 발행일에 노출)")
+                else:
+                    fails.append(f"date 가 미래({date}) — 프로덕션 빌드에서 제외되어 라이브에 안 보임"
+                                 " (의도된 예약이면 front matter에 scheduled: true)")
         except ValueError:
             pass
 

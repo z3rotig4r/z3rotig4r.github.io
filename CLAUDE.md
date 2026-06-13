@@ -22,3 +22,6 @@ Jekyll/Chirpy 기반 AI 보안 기술 블로그. 정체성: AI Red Teaming · LL
 | 2026-06-08 | 초기 구성 (agents 5, skills 5) | 전체 | AI 보안 블로그 포스팅 하네스 신규 구축 |
 | 2026-06-09 | image-designer 에이전트 + og-image 스킬 추가 (gpt-image-1 OG 커버) | agents/image-designer, skills/og-image, blog-orchestrator | 신규 글 검색 카드용 OG 배너 자동 생성 (로컬 OPENAI_API_KEY) |
 | 2026-06-09 | 뉴스 스크랩 강화 (국내2:해외8, 한글번역, 출처필수, linkcheck) | agents/news-scout, skills/news-scrap | 해외 번역 다이제스트로 접근성·CTR↑, 죽은 링크 게이트 |
+| 2026-06-13 | 다이제스트 hada.io 톤 불릿 포맷 | skills/news-scrap | 스캔성·CTR↑ |
+| 2026-06-13 | 예약 발행 자동화 (미래날짜 _posts + 매일 cron 리빌드, seo-lint `scheduled:true` 예외) | pages-deploy.yml, skills/seo-lint | 날짜 분산 발행으로 freshness 신호↑, 사람은 PR 1회 검수 후 무방치 자동 게시 (LLM 미사용) |
+| 2026-06-13 | post-writer "붕 뜨는 느낌 금지" 규약 (실무 예시·기업 best-practice·무할루시네이션) | agents/post-writer | 개념 글의 적용 감각↑, 사실성 강제 |
