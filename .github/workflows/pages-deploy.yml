@@ -9,6 +9,12 @@ on:
       - README.md
       - LICENSE
 
+  # 예약 발행: 미래 날짜 글은 Jekyll future:false 라 빌드에서 제외된다.
+  # 매일 리빌드하면 발행일이 지난 예약 글이 그날 자동으로 라이브에 노출된다.
+  # LLM 미사용 — 빌드/배포 전용이라 하네스 규약(Actions에 API키 0) 유지.
+  schedule:
+    - cron: "13 1 * * *" # 매일 10:13 KST (01:13 UTC) — 예약 글 자동 게시
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
