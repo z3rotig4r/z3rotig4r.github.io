@@ -4,6 +4,7 @@ title: "[AI Red Teaming] AI 레드티밍이란? — 정의, 전통 보안과의 
 date: 2026-06-09 00:30 +0900
 description: "AI 레드티밍(AI Red Teaming)의 정의와 전통 보안 테스트와의 차이, 핵심 용어, 방법론, 주요 공격 벡터와 방어를 한 번에 정리합니다."
 category: [AI Red Teaming]
+pin: true
 tags: [ai-red-teaming, llm-security, prompt-injection, jailbreak, ai-보안]
 math: false
 mermaid: true

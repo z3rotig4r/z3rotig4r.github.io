@@ -8,7 +8,7 @@ image:
   alt: Transformer Architecture
 category: [Paper Review, AI]
 tags: [nlp, transformer, GPT]
-pin: true
+pin: false
 math: true
 mermaid: true
 toc: true

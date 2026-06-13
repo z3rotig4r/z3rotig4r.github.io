@@ -4,7 +4,7 @@ title: "[FHE] Homomorphic Arithmetic Operations & CKKS's Encoding"
 date: 2025-10-15 15:04 +0900
 category: [Research, FHE]
 tags: []
-pin: true
+pin: false
 math: true
 mermaid: true
 toc: true

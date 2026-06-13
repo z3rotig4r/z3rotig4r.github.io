@@ -1,6 +1,18 @@
 <!-- A placeholder to allow defining custom metadata -->
 
 {%- comment -%}
+주제 집중(topical authority): Archive(레거시 학술·cert) 글은 검색 색인서 제외하되
+사이트엔 유지한다. AI 보안 주제로 사이트 신호를 모은다. follow로 링크 자산은 보존.
+front matter `robots: index`로 개별 예외 가능.
+{%- endcomment -%}
+{%- assign first_cat = page.categories[0] -%}
+{%- if page.robots -%}
+<meta name="robots" content="{{ page.robots }}">
+{%- elsif first_cat == 'Archive' -%}
+<meta name="robots" content="noindex, follow">
+{%- endif -%}
+
+{%- comment -%}
 FAQPage 구조화 데이터(JSON-LD). front matter에 `faq:` 리스트(q/a)가 있으면
 구글 리치결과(FAQ rich result) + 생성형 엔진(GEO) 인용 가능성을 높인다.
 예:

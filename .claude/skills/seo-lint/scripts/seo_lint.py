@@ -59,6 +59,18 @@ def lint(path: str):
     if cats_early and cats_early[0] == "Archive":
         return fails, ["Archive(레거시) — SEO 규약 검사 면제"]
 
+    # 레거시(리모델 이전) 면제: 신규 SEO 규약은 2026-06-08 하네스 구축 이후 글에만 적용.
+    # 그 이전 글(옛 Research·Paper Review 등)을 핀 정리 등으로 건드려도 게이트가 막지 않는다.
+    date_early = fm.get("date", "")
+    if is_post and DATE_RE.match(date_early):
+        try:
+            import datetime
+            _pub = datetime.datetime.strptime(date_early, "%Y-%m-%d %H:%M %z")
+            if _pub < datetime.datetime(2026, 6, 8, tzinfo=_pub.tzinfo):
+                return fails, ["레거시(2026-06-08 이전) — SEO 규약 검사 면제"]
+        except ValueError:
+            pass
+
     desc = fm.get("description", "").strip().strip('"')
     if not desc:
         fails.append("description 없음/빈값")

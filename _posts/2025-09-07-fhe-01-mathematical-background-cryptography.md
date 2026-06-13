@@ -8,7 +8,7 @@ image:
   alt: Homomorphic Encryption
 category: [Research, FHE]
 tags: [HE, FHE, Math]
-pin: true
+pin: false
 math: true
 mermaid: true
 toc: true

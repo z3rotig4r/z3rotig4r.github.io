@@ -5,7 +5,7 @@ date: 2025-09-09 09:32 +0900
 description: 
 category: [Research, FHE]
 tags: [FHE, PQC, Lattice]
-pin: true
+pin: false
 math: true
 mermaid: true
 toc: true
