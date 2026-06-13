@@ -25,3 +25,4 @@ Jekyll/Chirpy 기반 AI 보안 기술 블로그. 정체성: AI Red Teaming · LL
 | 2026-06-13 | 다이제스트 hada.io 톤 불릿 포맷 | skills/news-scrap | 스캔성·CTR↑ |
 | 2026-06-13 | 예약 발행 자동화 (미래날짜 _posts + 매일 cron 리빌드, seo-lint `scheduled:true` 예외) | pages-deploy.yml, skills/seo-lint | 날짜 분산 발행으로 freshness 신호↑, 사람은 PR 1회 검수 후 무방치 자동 게시 (LLM 미사용) |
 | 2026-06-13 | post-writer "붕 뜨는 느낌 금지" 규약 (실무 예시·기업 best-practice·무할루시네이션) | agents/post-writer | 개념 글의 적용 감각↑, 사실성 강제 |
+| 2026-06-13 | GEO/스키마 도입 (NotFair SEO 방법론 차용) — FAQPage JSON-LD 훅 + GEO 신호 스택 | _includes/metadata-hook.html, agents/seo-optimizer·post-writer | AI 검색(ChatGPT/Perplexity/AI Overview) 인용·리치결과로 CTR↑. NotFair는 SEO 스킬만 로컬 차용(원격 MCP·Ads 미사용) |
