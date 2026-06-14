@@ -68,6 +68,24 @@ PyRIT은 기본적으로 `~/.pyrit/` 를 읽는다. `~/.pyrit/.env` 에 대상 p
 6. Memory 분석       — 성공 케이스·대화 흐름 리포트
 ```
 
+Converter가 왜 강력한지는 코드로 보면 분명하다. 같은 요청을 base64로 감싸 키워드 필터를 우회하는 식이다(공개 API 기준 예시):
+
+```python
+from pyrit.prompt_converter import Base64Converter
+from pyrit.prompt_target import OpenAIChatTarget
+from pyrit.orchestrator import PromptSendingOrchestrator
+
+target = OpenAIChatTarget()                      # 자기 소유/인가된 엔드포인트
+orchestrator = PromptSendingOrchestrator(
+    objective_target=target,
+    prompt_converters=[Base64Converter()],       # 평문 → base64 변형 후 전송
+)
+await orchestrator.send_prompts_async(prompt_list=["<테스트 프롬프트>"])
+await orchestrator.print_conversations_async()   # 입력·변형·응답·점수 확인
+```
+
+`Base64Converter`를 `ROT13`·`TranslationConverter`·역할극 래퍼로 바꾸거나 **체인**하면 우회 표면이 넓어진다 — 가드레일이 평문만 보고 막는다면 인코딩 변형에 뚫린다.
+
 > **권한 주의** — 자신이 소유하거나 명시적 허가를 받은 모델·엔드포인트에만 실행한다. 외부 서비스 무단 공격은 약관·법 위반.
 {: .prompt-warning }
 
